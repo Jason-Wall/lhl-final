@@ -96,7 +96,7 @@ INSERT INTO items (
   user_id, category_id, title, description, condition, end_date
 )
 VALUES (
-  1, 5, 'Baseball Bat', 'Hit my first homer with this one… sad to let it go.', 4, '2023-04-31 11:29:34.00'
+  1, 5, 'Baseball Bat', 'Hit my first homer with this one… sad to let it go.', 4, '2023-04-29 11:29:34.00'
 );
 
 
