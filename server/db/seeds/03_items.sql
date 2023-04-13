@@ -55,12 +55,7 @@ INSERT INTO items (
 VALUES (
   2, 3, 'Tesla', '2021 Tesla Model 3 Standard Range Plus only 31,000 km Local BC vehicle and in great condition. Value Pricing.', 5, '2023-05-01 11:23:34.00'
 );
-INSERT INTO items (
-  user_id, category_id, title, description, condition, end_date
-) 
-VALUES (
-  2, 3, 'Tesla', '2021 Tesla Model 3 Standard Range Plus only 31,000 km Local BC vehicle and in great condition. Value Pricing.', 5, '2023-05-01 11:23:34.00'
-);
+
 INSERT INTO items (
   user_id, category_id, title, description, condition, end_date
 ) 
@@ -113,4 +108,83 @@ INSERT INTO items (
 )
 VALUES (
   5, 5, 'Kona Mountain Bike', '180 mm of travel, dropper post', 3, '2023-05-01 11:23:34.00'
+);
+
+INSERT INTO items (
+  user_id, category_id, title, description, condition, end_date
+)
+VALUES (
+  1, 4, 'LED Coffee Table', 'Glows in the dark, super futuristic ', 4, '2023-05-01 11:23:34.00'
+);
+
+
+INSERT INTO items (
+  user_id, category_id, title, description, condition, end_date
+)
+VALUES (
+  2, 4, 'Round Coffee Table', 'Made by my grandfather from wood in our barn.', 4, '2023-05-01 11:23:34.00'
+);
+
+
+
+
+INSERT INTO items (
+  user_id, category_id, title, description, condition, end_date
+)
+VALUES (
+  3, 4, 'Kitchen Table', 'Easily seats 6, a few scratches', 3, '2023-05-01 11:23:34.00'
+);
+
+
+
+
+INSERT INTO items (
+  user_id, category_id, title, description, condition, end_date
+)
+VALUES (
+  1, 4, 'Huge Farmyard Style Table', 'Absolute unit of a table. This is the kind of table they would have had the last supper at?', 3, '2023-05-01 11:23:34.00'
+);
+
+
+
+
+INSERT INTO items (
+  user_id, category_id, title, description, condition, end_date
+)
+VALUES (
+  1, 4, 'Huge Farmyard Style Table', 'Absolute unit of a table. This is the kind of table they would have had the last supper at!', 2, '2023-05-01 11:23:34.00'
+);
+
+
+
+
+INSERT INTO items (
+  user_id, category_id, title, description, condition, end_date
+)
+VALUES (
+  2, 4, 'Stylish Couch', 'Comfortable for napping', 3, '2023-05-01 11:13:34.00'
+);
+
+
+INSERT INTO items (
+  user_id, category_id, title, description, condition, end_date
+)
+VALUES (
+  5, 4, 'Stylish Pillows', 'Stylish pillows, very comfortable', 3, '2023-05-01 9:23:34.00'
+);
+
+
+INSERT INTO items (
+  user_id, category_id, title, description, condition, end_date
+)
+VALUES (
+  1, 4, 'Angular Coffee Table', 'I have too many coffee tables, this one is really cool though', 5, '2023-05-01 8:23:34.00'
+);
+
+
+INSERT INTO items (
+  user_id, category_id, title, description, condition, end_date
+)
+VALUES (
+  1, 4, 'Rocking Chair', 'If the chair is a rockin dont come knockin.', 2, '2023-04-28 11:23:34.00'
 );
