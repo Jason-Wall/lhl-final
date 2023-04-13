@@ -2,5 +2,29 @@ INSERT INTO item_images (
   item_id, img_url
 )
 VALUES (
-  1, 'https://www.ctvnews.ca/content/dam/ctvnews/en/images/2023/2/21/original-iphone-sold-for-over--63k-1-6283080-1677016771738.jpeg'
+  1, 'https://imgur.com/5qo0n40'
+);
+INSERT INTO item_images (
+  item_id, img_url
+)
+VALUES (
+  4, 'https://imgur.com/P8GssV7'
+);
+INSERT INTO item_images (
+  item_id, img_url
+)
+VALUES (
+  3, 'https://imgur.com/LdLC1KB'
+);
+INSERT INTO item_images (
+  item_id, img_url
+)
+VALUES (
+  2, 'https://imgur.com/261EkzU'
+);
+INSERT INTO item_images (
+  item_id, img_url
+)
+VALUES (
+  5, 'https://imgur.com/E8YwXmh'
 );
