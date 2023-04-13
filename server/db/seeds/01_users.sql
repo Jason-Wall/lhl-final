@@ -27,4 +27,4 @@ INSERT INTO users (
 )
 VALUES (
   'Rebecca Wilson', 'rebeccawilson@gmail.com'
-)
+);
