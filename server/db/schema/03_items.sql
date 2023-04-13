@@ -4,7 +4,7 @@ CREATE TABLE items (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
   title VARCHAR(255) NOT NULL,
-  description VARCHAR(500) NOT NULL,
+  description TEXT NOT NULL,
   condition INTEGER,
   Archive BOOLEAN not null default false,
   end_date TIMESTAMP NOT NULL
