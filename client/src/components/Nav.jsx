@@ -2,6 +2,10 @@ import './Nav.scss';
 import Search from './Search';
 
 function Nav(props) {
+
+  let categories = props.categories
+  console.log(props.categories)
+
   return (
     <div className='nav nav-bar'>
       <div className="nav top-nav">
@@ -15,6 +19,9 @@ function Nav(props) {
       </div>
       <div className="nav bottom-nav"> 
         <div className="nav categories">
+          {/* {categories.map(category => (
+            <h2>{category}</h2>
+          ))} */}
           <h2>Electronics</h2>
           <h2>Furniture</h2>
           <h2>Vehichles</h2>

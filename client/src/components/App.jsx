@@ -20,7 +20,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <main>
-        <Nav items={state.items}/>
+        <Nav items={state.items} categories={state.categories}/>
         <Items images={state.images} />
       </main>
     </BrowserRouter>
