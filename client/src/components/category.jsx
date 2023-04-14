@@ -10,6 +10,7 @@ function Category(props) {
   const params = useParams();
 
   let itemsInCategory = [];
+  
 
   axios.get(`/categories/:categoryId`, {
     params: {
