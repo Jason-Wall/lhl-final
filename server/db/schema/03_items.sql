@@ -7,5 +7,5 @@ CREATE TABLE items (
   description VARCHAR(500) NOT NULL,
   condition INTEGER,
   Archive BOOLEAN not null default false,
-  end_date DATE NOT NULL,
+  end_date DATE NOT NULL
 );
