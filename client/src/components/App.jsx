@@ -9,7 +9,7 @@ import Nav from './Nav';
 import useApplicationData from '../hooks/useApplicationData';
 
 // Import styling:
-import './App.css';
+import './App.scss';
 
 // MAIN FUNCTION
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-    <Nav items/>
+    <Nav items={state.items}/>
       <div className='App'>
         <header className='App-header'>
           <p>
@@ -36,6 +36,7 @@ export default function App() {
           <Item test={'Test String'} />
         </header>
       </div>
+
     </BrowserRouter>
   );
 }

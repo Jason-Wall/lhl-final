@@ -14,7 +14,7 @@ export default function useApplicationData() {
     ])
       .then((res) => {
         console.log(res);
-        // setState(prev => ({ ...prev, items: res[0].data }));
+        setState(prev => ({ ...prev, items: res[0].data }));
       });
   }, []);
 

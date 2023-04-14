@@ -1,12 +1,12 @@
 import './Nav.scss';
 import Search from './Search';
 
-function Nav() {
+function Nav(props) {
   return (
     <div className='nav-bar'>
       <div className="top-nav">
         <div className="logo"><h1>SFBS</h1></div>
-        <div className="search"><Search /></div>
+        <div className="search"><Search items={props.items}/></div>
         <div className="right-nav">
           <div className='sell-now'>Sell Now</div>  
           <div className='profile'>Profile</div>

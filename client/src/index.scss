@@ -10,3 +10,7 @@ body {
   margin: 0;
   }/*to get rid of default margin*/
   
+.root {
+  display: flex;
+  flex-direction: column;
+}
