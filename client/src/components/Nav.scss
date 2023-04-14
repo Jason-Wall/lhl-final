@@ -1,8 +1,11 @@
 .nav-bar {
+  background-color: rgb(26, 255, 0);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
 
     .top-nav, .bottom-nav {
      width: 100%;
@@ -27,6 +30,7 @@
     .search {
       background-color: grey;
       align-items: center;
+      z-index: 2;
     }
 
 }

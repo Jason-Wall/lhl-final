@@ -14,7 +14,7 @@ function Search(props) {
     setSearchInput(event.target.value);
   };
 
-  let filteredItems = items;
+  let filteredItems = [];
   if (searchInput.length > 0) {
     filteredItems = items.filter((item) => {
       return item.title.toLowerCase().includes(searchInput);
@@ -22,14 +22,10 @@ function Search(props) {
   }
   console.log("filtered", filteredItems)
 
-  let results = searchInput > 1 ? filteredItems.map(item => (
-    <p>{item.title}</p>
-    )) : ""
-
 
   return (
-    <div className='search-bar-with-results'>
-      <div className='search-bar-text'>
+    <div className='nav search-bar-with-results'>
+      <div className='nav search-bar-text'>
       <input
         type="text"
         placeholder="Search items ..."
@@ -40,7 +36,7 @@ function Search(props) {
         <FontAwesomeIcon icon={icon({ name: 'magnifying-glass' })} />
       </button>
       </div>
-      <ul>
+      <ul className='results'>
         {filteredItems.map(item => (
     <p>{item.title}</p>
     ))}
