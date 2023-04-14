@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-    <Nav />
+    <Nav items/>
       <div className='App'>
         <header className='App-header'>
           <p>
