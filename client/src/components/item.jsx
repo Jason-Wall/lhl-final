@@ -1,5 +1,5 @@
 import React from "react";
-import "./item.scss"; //not sure if this is correct
+import "./Item.scss"; //not sure if this is correct
 // import classNames from 'classnames';
 
 function Item(props) {
