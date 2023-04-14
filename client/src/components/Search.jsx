@@ -17,13 +17,19 @@ function Search(props) {
   let filteredItems = items;
   if (searchInput.length > 0) {
     filteredItems = items.filter((item) => {
-      return item.title.match(searchInput);
+      return item.title.toLowerCase().includes(searchInput);
     });
   }
   console.log("filtered", filteredItems)
 
+  let results = searchInput > 1 ? filteredItems.map(item => (
+    <p>{item.title}</p>
+    )) : ""
+
+
   return (
-    <div>
+    <div className='search-bar-with-results'>
+      <div className='search-bar-text'>
       <input
         type="text"
         placeholder="Search items ..."
@@ -33,14 +39,12 @@ function Search(props) {
       <button type={'submit'}>
         <FontAwesomeIcon icon={icon({ name: 'magnifying-glass' })} />
       </button>
-      <div>
-        {/* {filteredItems.map(item => {
-          return(
-          <div>
-            <p>{item.title}</p>
-          </div>
-        )})} */}
-          </div>
+      </div>
+      <ul>
+        {filteredItems.map(item => (
+    <p>{item.title}</p>
+    ))}
+        </ul>
     </div>
   );
 }

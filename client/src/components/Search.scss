@@ -2,3 +2,11 @@ div {
   display: flex;
   justify-content: space-around;
 }
+
+.search-bar-with-results {
+  flex-direction: column;
+}
+
+.search-bar-text {
+  flex-direction: row;
+}
