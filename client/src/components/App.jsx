@@ -14,7 +14,6 @@ import './App.css';
 export default function App() {
   // State management and functions:
   const { state, setState } = useApplicationData();
-  console.log(state);
 
   return (
     <BrowserRouter> 
@@ -31,7 +30,7 @@ export default function App() {
           >
             Hello Jenny
           </a>
-          <Item test={'Test String'} />
+          <Item test={state.items.test} />
         </header>
       </div>
     </BrowserRouter>
