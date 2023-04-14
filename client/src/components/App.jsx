@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 // Import components:
 import Item from './item';
+import Nav from './Nav';
 
 // Import hooks and helpers:
 import useApplicationData from '../hooks/useApplicationData';
@@ -14,9 +15,11 @@ import './App.css';
 export default function App() {
   // State management and functions:
   const { state, setState } = useApplicationData();
+  console.log(state);
 
   return (
-    <BrowserRouter> 
+    <BrowserRouter>
+    <Nav />
       <div className='App'>
         <header className='App-header'>
           <p>
@@ -30,7 +33,7 @@ export default function App() {
           >
             Hello Jenny
           </a>
-          <Item test={state.items.test} />
+          <Item test={'Test String'} />
         </header>
       </div>
     </BrowserRouter>
