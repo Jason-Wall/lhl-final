@@ -1,5 +1,6 @@
 import './Nav.scss';
 import Search from './Search';
+import { Link } from 'react-router-dom';
 
 function Nav(props) {
 
@@ -9,7 +10,10 @@ function Nav(props) {
   return (
     <div className='nav nav-bar'>
       <div className="nav top-nav">
-        <div className="nav logo"><h1>SFBS</h1></div>
+        <div className="nav logo">
+          <Link to={'/'}>
+          <h1>SFBS</h1></Link>
+        </div>
         <div className="nav search"><Search items={props.items}/></div>
         <div className="nav right-nav">
           <div className='nav sell-now'>Sell Now</div>  
@@ -19,14 +23,13 @@ function Nav(props) {
       </div>
       <div className="nav bottom-nav"> 
         <div className="nav categories">
-          {/* {categories.map(category => (
-            <h2>{category}</h2>
-          ))} */}
-          <h2>Electronics</h2>
-          <h2>Furniture</h2>
-          <h2>Vehichles</h2>
-          <h2>Sport Equipment</h2>
-          <h2>Clothing</h2>
+          {categories.map(category => (
+              <Link
+              to={`/categories/${category.id}`}
+            >
+               <h2>{category.title}</h2>
+            </Link>
+          ))}
         </div>
       </div>
     </div>

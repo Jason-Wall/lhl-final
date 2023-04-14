@@ -31,6 +31,7 @@ app.use(express.static('../client/build'));
 const itemRoutes = require("./routes/items");
 const userRoutes = require("./routes/users");
 const imageRoutes = require("./routes/images");
+const categoryRoutes = require("./routes/categories");
 
 
 
@@ -41,6 +42,7 @@ const imageRoutes = require("./routes/images");
 app.use("/items", itemRoutes);
 app.use("/users", userRoutes);
 app.use("/images", imageRoutes);
+app.use("/categories", categoryRoutes)
 
 
 

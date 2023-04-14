@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Items from './Items';
 import Nav from './Nav';
 import ItemDetail from './ItemDetail';
+import Category from './Category';
 
 // Import hooks and helpers:
 import useApplicationData from '../hooks/useApplicationData';
@@ -31,6 +32,10 @@ export default function App() {
           <Route
             path='items/:itemId'
             element={<ItemDetail />}
+          ></Route>
+          <Route
+            path='/categories/:categoryId'
+            element={<Category images={state.images}/>}
           ></Route>
         </Routes>
       </main>

@@ -7,6 +7,7 @@ export default function useApplicationData() {
     items: [],
     users: [],
     images: [],
+    categories: []
   });
 
   //Requests for data on first page load.
@@ -15,6 +16,7 @@ export default function useApplicationData() {
       axios.get("/items"), // Add more requests as we scale up.
       axios.get("/users"),
       axios.get("/images/first"),
+      axios.get("/categories"),
     ]).then((res) => {
       // console.log(res);
       setState((prev) => ({
@@ -22,6 +24,7 @@ export default function useApplicationData() {
         items: res[0].data,
         users: res[1].data,
         images: res[2].data,
+        categories: res[3].data
       }));
     });
   }, []);

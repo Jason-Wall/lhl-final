@@ -2,6 +2,7 @@ import './Search.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 function Search(props) {
 
@@ -38,7 +39,8 @@ function Search(props) {
       </div>
       <ul className='results'>
         {filteredItems.map(item => (
-    <p>{item.title}</p>
+          <Link to={`/items/${item.id}`}>
+    <p>{item.title}</p></Link>
     ))}
         </ul>
     </div>
