@@ -146,18 +146,6 @@ VALUES (
 );
 
 
-
-
-INSERT INTO items (
-  user_id, category_id, title, description, condition, end_date
-)
-VALUES (
-  1, 4, 'Huge Farmyard Style Table', 'Absolute unit of a table. This is the kind of table they would have had the last supper at!', 2, '2023-05-01 11:23:34.00'
-);
-
-
-
-
 INSERT INTO items (
   user_id, category_id, title, description, condition, end_date
 )
