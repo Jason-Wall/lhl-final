@@ -2,7 +2,11 @@ import React from 'react';
 import { BrowserRouter } from "react-router-dom";
 
 // Import components:
+<<<<<<< HEAD
 // import Item from "./Item";
+=======
+import Items from "./Items";
+>>>>>>> f67139dfdc192b6f9bdf32487439e0f81dbfc164
 import Nav from "./Nav";
 import Item from "./Item";
 
@@ -20,6 +24,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+<<<<<<< HEAD
     <Nav items={state.items}/>
       <div className='App'>
         <header className='App-header'>
@@ -31,6 +36,12 @@ export default function App() {
         </header>
       </div>
 
+=======
+      <main>
+        <Nav />
+        <Items images={state.images} />
+      </main>
+>>>>>>> f67139dfdc192b6f9bdf32487439e0f81dbfc164
     </BrowserRouter>
   );
 }

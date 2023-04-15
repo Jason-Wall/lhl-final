@@ -3,12 +3,12 @@ import "./Item.scss"; //not sure if this is correct
 // import classNames from 'classnames';
 
 function Item(props) {
-  console.log("*****", props.state);
+  console.log("props***", props);
   return (
     <img
       className="item"
-      src={props.image}
-      alt={props.title}
+      src={props.photo}
+      alt="props.title we need to add this"
       width="400"
       height="400"
     />
