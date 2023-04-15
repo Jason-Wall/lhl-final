@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 // Import components:
-import Item from "./Item";
+import Items from "./Items";
 import Nav from "./Nav";
 
 // Import hooks and helpers:
@@ -19,16 +19,10 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Nav />
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload!!!!
-          </p>
-          Hello Jenny
-          <Item test={"Test String"} s={state} />
-        </header>
-      </div>
+      <main>
+        <Nav />
+        <Items images={state.images} />
+      </main>
     </BrowserRouter>
   );
 }

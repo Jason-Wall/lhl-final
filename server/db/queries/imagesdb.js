@@ -1,10 +1,10 @@
 const db = require("../db");
 
-// getImages - Get object of all images
-const getAllImages = () => {
+// getImages - Get object of the first image of each item
+const getFirstImage = () => {
   return db
     .query(
-      `SELECT * FROM item_images;`
+      `SELECT DISTINCT ON (item_id) id, item_id, img_url FROM item_images ORDER BY item_id, id;`
     )
     .then((images) => {
       return images.rows;
@@ -15,5 +15,5 @@ const getAllImages = () => {
 };
 
 module.exports = {
-  getAllImages
+  getFirstImage,
 };
