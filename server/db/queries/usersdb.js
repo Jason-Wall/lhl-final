@@ -1,13 +1,13 @@
 const db = require("../db");
 
 // getItems - Get object of all Items
-const getAllItems = () => {
+const getAllUsers = () => {
   return db
     .query(
-      `SELECT * FROM items;`
+      `SELECT * FROM users;`
     )
-    .then((items) => {
-      return items.rows;
+    .then((users) => {
+      return users.rows;
     })
     .catch(function (xhr, status, error) {
       console.log("Error: " + error);
@@ -15,5 +15,5 @@ const getAllItems = () => {
 };
 
 module.exports = {
-  getAllItems
+  getAllUsers
 };

@@ -1,12 +1,12 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
 
 // Import components:
-import Item from './item';
-import Nav from './Nav';
+import Item from "./Item";
+import Nav from "./Nav";
 
 // Import hooks and helpers:
-import useApplicationData from '../hooks/useApplicationData';
+import useApplicationData from "../hooks/useApplicationData";
 
 // Import styling:
 import './App.scss';
@@ -25,15 +25,8 @@ export default function App() {
           <p>
             Edit <code>src/App.js</code> and save to reload!!!!
           </p>
-          <a
-            className='App-link'
-            href='https://reactjs.org'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Hello Jenny
-          </a>
-          <Item test={'Test String'} />
+          Hello Jenny
+          <Item test={"Test String"} s={state} />
         </header>
       </div>
 
