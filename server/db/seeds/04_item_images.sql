@@ -1,38 +1,12 @@
 INSERT INTO item_images (
   item_id, img_url
 )
-VALUES (
-  1, 'https://imgur.com/5qo0n40.jpg'
-);
-INSERT INTO item_images (
-  item_id, img_url
-)
-VALUES (
-  4, 'https://imgur.com/P8GssV7.jpg'
-);
-INSERT INTO item_images (
-  item_id, img_url
-)
-VALUES (
-  3, 'https://imgur.com/LdLC1KB.jpg'
-);
-INSERT INTO item_images (
-  item_id, img_url
-)
-VALUES (
-  2, 'https://imgur.com/261EkzU.jpg'
-);
-INSERT INTO item_images (
-  item_id, img_url
-)
-VALUES (
-  5, 'https://imgur.com/E8YwXmh.jpg'
-);
-
-INSERT INTO item_images (
-  item_id, img_url
-)
-VALUES (6, 'https://imgur.com/r5SZdtj.jpg'), 
+VALUES (1, 'https://imgur.com/5qo0n40.jpg'),
+(4, 'https://imgur.com/P8GssV7.jpg'),
+(3, 'https://imgur.com/LdLC1KB.jpg'),
+(2, 'https://imgur.com/261EkzU.jpg'),
+(5, 'https://imgur.com/E8YwXmh.jpg'),
+(6, 'https://imgur.com/r5SZdtj.jpg'), 
 (6, 'https://imgur.com/XsBFQFu.jpg'),
 (6, 'https://imgur.com/u20seeF.jpg'),
 (6, 'https://i.imgur.com/K47MGgj.jpg'),
@@ -53,4 +27,17 @@ VALUES (6, 'https://imgur.com/r5SZdtj.jpg'),
 (10, 'https://i.imgur.com/PyxQ745.jpg'),
 (10, 'https://i.imgur.com/ynifBdj.jpg'),
 (10, 'https://i.imgur.com/HFmZEos.jpg'),
-(10, 'https://i.imgur.com/TBrsPvR.jpg')
+(10, 'https://i.imgur.com/TBrsPvR.jpg'),
+(11, 'https://i.imgur.com/tVAfMAX.jpg'),
+(12, 'https://i.imgur.com/ofPzDK4.jpg'),
+(13, 'https://i.imgur.com/Agtbhsg.jpg'),
+(14, 'https://i.imgur.com/dWz2US9.jpg'),
+(15, 'https://i.imgur.com/npK2iIQ.jpg'),
+(16, 'https://i.imgur.com/1eR9Wr7.jpg'),
+(17, 'https://i.imgur.com/42Yb8D2.jpg'),
+(18, 'https://i.imgur.com/gxIYBxn.jpg'),
+(19, 'https://i.imgur.com/xcDhqFK.jpg'),
+(20, 'https://i.imgur.com/XW5SIeR.jpg'),
+(21, 'https://i.imgur.com/2fIiOiv.jpg'),
+(22, 'https://i.imgur.com/rR0fP8A.jpg'),
+(23, 'https://i.imgur.com/3kQ1vDX.jpg');
