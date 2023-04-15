@@ -1,13 +1,13 @@
 const db = require("../db");
 
-// getItems - Get object of all Items
-const getAllItems = () => {
+// getImages - Get object of all images
+const getAllImages = () => {
   return db
     .query(
-      `SELECT * FROM items;`
+      `SELECT * FROM item_images;`
     )
-    .then((items) => {
-      return items.rows;
+    .then((images) => {
+      return images.rows;
     })
     .catch(function (xhr, status, error) {
       console.log("Error: " + error);
@@ -15,5 +15,5 @@ const getAllItems = () => {
 };
 
 module.exports = {
-  getAllItems
+  getAllImages
 };

@@ -29,6 +29,8 @@ app.use(express.static('../client/build'));
 
 // Separated Routes for each Resource
 const itemRoutes = require("./routes/items");
+const userRoutes = require("./routes/users");
+const imageRoutes = require("./routes/images");
 
 
 
@@ -37,6 +39,8 @@ const itemRoutes = require("./routes/items");
 // app.use("/items", items(db));
 
 app.use("/items", itemRoutes);
+app.use("/users", userRoutes);
+app.use("/images", imageRoutes);
 
 
 
