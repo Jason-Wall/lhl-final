@@ -4,7 +4,7 @@ import axios from 'axios';
 // State management
 export default function useApplicationData() {
   const [state, setState] = useState({
-    items: { test: 1 }  // Starting with empty objects.
+    items: { test: 4 }  // Starting with empty objects.
   });
 
   //Requests for data on first page load.
@@ -13,7 +13,8 @@ export default function useApplicationData() {
       axios.get('/items')   // Add more requests as we scale up.
     ])
       .then((res) => {
-        setState(prev => ({ ...prev, items: res[0].data }));
+        console.log(res);
+        // setState(prev => ({ ...prev, items: res[0].data }));
       });
   }, []);
 
