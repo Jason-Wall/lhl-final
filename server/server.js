@@ -27,14 +27,17 @@ app.use(express.static('../client/build'));
 
 
 
+// Separated Routes for each Resource
+const itemRoutes = require("./routes/items");
+
+
+
 //Endpoints - Currently lives inside of server - As we scale up we need to move
 // into routes folder for each (user, items, category, etc.)
 // app.use("/items", items(db));
 
-app.get("/items", (req, res) => {
-  console.log('inside Serve - /items');
-  res.send(`HelloHello!`);
-});
+app.use("/items", itemRoutes);
+
 
 
 app.listen(port, () => {

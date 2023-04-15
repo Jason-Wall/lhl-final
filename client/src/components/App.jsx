@@ -14,7 +14,6 @@ import './App.css';
 export default function App() {
   // State management and functions:
   const { state, setState } = useApplicationData();
-  console.log(state);
 
   return (
     <BrowserRouter>

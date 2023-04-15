@@ -1,16 +1,16 @@
-const erouter = require("express").Router();
+const express = require("express");
+const erouter = express.Router();
+const itemsdb = require('../db/queries/itemsdb');
 
-module.exports = db => {
-  erouter.get("/items", (req, res) => {
-    db.query(
-      `
-      SELECT * 
-      FROM items;
-    `
-    ).then(({ rows: items }) => {
-      response.json(items);
-    });
+
+// GET /items   - Gets all items
+erouter.get("/", (req, res) => {
+  itemsdb.getItems().then((items) => {
+    res.send({ items });
   });
+});
 
-  return erouter;
-};
+
+
+
+module.exports = erouter;

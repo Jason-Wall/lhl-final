@@ -13,7 +13,8 @@ export default function useApplicationData() {
       axios.get('/items')   // Add more requests as we scale up.
     ])
       .then((res) => {
-        setState(prev => ({ ...prev, items: res[0].data }));
+        console.log(res);
+        // setState(prev => ({ ...prev, items: res[0].data }));
       });
   }, []);
 
