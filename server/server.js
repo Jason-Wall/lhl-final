@@ -7,6 +7,12 @@ const cors = require('cors');
 const app = express();
 const port = 8001; // Define our base URL as http:\\localhost:8001
 
+// Use db instance
+const db = require("./db/db");
+
+// Route actions
+const items = require("./routes/items");
+
 // Middleware
 // Morgan documents network traffic to console.
 app.use(morgan('dev'));
@@ -21,8 +27,12 @@ app.use(express.static('../client/build'));
 
 
 
-//endpoints
-app.get("/", (req, res) => {
+//Endpoints - Currently lives inside of server - As we scale up we need to move
+// into routes folder for each (user, items, category, etc.)
+// app.use("/items", items(db));
+
+app.get("/items", (req, res) => {
+  console.log('inside Serve - /items');
   res.send(`HelloHello!`);
 });
 

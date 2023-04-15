@@ -31,7 +31,7 @@ export default function App() {
           >
             Hello Jenny
           </a>
-          <Item test={'Test String'} />
+          <Item test={state.items.test} />
         </header>
       </div>
     </BrowserRouter>
