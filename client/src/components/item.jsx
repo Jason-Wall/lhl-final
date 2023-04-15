@@ -2,6 +2,17 @@ import React from "react";
 import "./item.scss"; //not sure if this is correct
 // import classNames from 'classnames';
 
-export default function Item(props) {
-  return <h1>This is where I will put my html. {props.test}</h1>;
+function Item(props) {
+  console.log("*****", props.state);
+  return (
+    <img
+      className="item"
+      src={props.image}
+      alt={props.title}
+      width="400"
+      height="400"
+    />
+  );
 }
+
+export default Item;

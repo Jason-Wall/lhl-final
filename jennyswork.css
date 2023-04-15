@@ -13,19 +13,6 @@ body {
 
 
 
-/* this class makes all of the images the same size without stretching them */
-.test {
-  float: left;
-  width:  20vw;
-  height: 40vh;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-div {
-  display:flex;
-  justify-content: space-around;
-}
 
 
   
