@@ -1,0 +1,31 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  }/*to get rid of default margin*/
+
+
+
+
+/* this class makes all of the images the same size without stretching them */
+.test {
+  float: left;
+  width:  20vw;
+  height: 40vh;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+div {
+  display:flex;
+  justify-content: space-around;
+}
+
+
+  
