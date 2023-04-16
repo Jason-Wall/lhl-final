@@ -27,13 +27,13 @@ function Search(props) {
   return (
     <div className='nav search-bar-with-results'>
       <div className='nav search-bar-text'>
-      <input
+      <input 
         type="text"
         placeholder="Search items ..."
         onChange={handleChange}
         value={searchInput}
       />
-      <button type={'submit'}>
+      <button className={'btn'} type={'submit'}>
         <FontAwesomeIcon icon={icon({ name: 'magnifying-glass' })} />
       </button>
       </div>
