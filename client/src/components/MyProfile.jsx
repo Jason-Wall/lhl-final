@@ -51,7 +51,7 @@ const MyProfile = ({ users, items, bids, images }) => {
         <Link
           to={`/items/${item.id}`}
           key={item.id}>
-          <Item photo={img.img_url}></Item>
+          <Item photo={img.img_url} alt={item.title}></Item>
         </Link>
       );
     })}

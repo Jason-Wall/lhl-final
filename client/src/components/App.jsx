@@ -20,7 +20,7 @@ import "./App.scss";
 // MAIN FUNCTION
 export default function App() {
   // State management and functions:
-  const { state, setState } = useApplicationData();
+  const { state, setState, setStateRefresh } = useApplicationData();
 
   return (
     <BrowserRouter>
@@ -39,8 +39,22 @@ export default function App() {
           ></Route>
           <Route path="items/:itemId" element={<ItemDetail />}></Route>
           <Route
+            path="/"
+            element={
+              <Items images={state.images} endingSoon={state.itemsEndingSoon} />
+            }
+          ></Route>
+          <Route path="items/:itemId" element={<ItemDetail />}></Route>
+          <Route
             path="items/new"
-            element={<ItemEdit item={false} categories={state.categories} />}
+            element={
+              <ItemEdit
+                item={false}
+                categories={state.categories}
+                conditions={state.conditions}
+                onSubmit={setStateRefresh}
+              />
+            }
           ></Route>
           <Route
             path="/categories/:categoryId"

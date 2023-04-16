@@ -1,4 +1,6 @@
-import React, { useState, useNavigate, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
+import { Navigate } from 'react-router-dom';
+
 import axios from 'axios';
 
 import SelectListOptions from './general/SelectListOptions';
@@ -14,6 +16,8 @@ function ItemEdit(props) {
   const [endDate, setEndDate] = useState(props.item.endDate || '');
   const [minBid, setMinBid] = useState(props.item.minBid || 0);
   const [imgUrl, setImgUrl] = useState(props.item.imgUrl || 'https://i.imgur.com/87xMgGQ.png');
+
+  const [newItemId, setNewItemId] = useState(false);
 
   // SUPPORTING FUNCTIONS:
 
@@ -34,8 +38,9 @@ function ItemEdit(props) {
 
     axios
       .post('/items/new', itemData)
-      .then((response) => {
-        console.log('Server response:', response.data);
+      .then((res) => {
+        props.onSubmit(true);
+        setNewItemId(res.data.id);
       })
       .catch((error) => {
         console.error('Error submitting form:', error);
@@ -44,6 +49,7 @@ function ItemEdit(props) {
 
   return (
     <Fragment>
+      {newItemId && <Navigate to={'/items/' + newItemId} />}
       <form onSubmit={handleSubmit} autoComplete='off'>
         <div className={'itemEdit'}></div>
         <div className={'m-4'}>
@@ -53,6 +59,7 @@ function ItemEdit(props) {
               <img
                 className={'imageContainer img-fluid'}
                 src='https://i.imgur.com/0MBBOMT.jpeg'
+                alt='image_url'
               ></img>
               <div className={'form-group m-1'}>
                 <label htmlFor='item-url'>Item URL:</label>
@@ -69,7 +76,7 @@ function ItemEdit(props) {
               </div>
             </div>
 
-            <div className={'flex-column col-8 justify-content-between'}>
+            <div className={'flex-column col-8'}>
               <div className={'form-group m-1'}>
                 <label htmlFor='item-title'>Title:</label>
                 <input
@@ -97,19 +104,6 @@ function ItemEdit(props) {
               </div>
               <div className={'row'}>
                 <div className={'form-group col m-1'}>
-                  <label htmlFor='item-condition'>Condition:</label>
-                  <input
-                    className={'form-control'}
-                    type='number'
-                    name='item-condition'
-                    value={condition}
-                    placeholder='Item Condition'
-                    onChange={(event) => {
-                      setCondition(event.target.value);
-                    }}
-                  />
-                </div>
-                <div className={'form-group col m-1'}>
                   <label htmlFor='item-category'>Category:</label>
                   <select
                     className={'form-control'}
@@ -119,6 +113,21 @@ function ItemEdit(props) {
                     onChange={(event) => setCategory(event.target.value)}
                   >
                     <SelectListOptions options={props.categories} />
+                  </select>
+                </div>
+
+                <div className={'form-group col m-1'}>
+                  <label htmlFor='item-condition'>Condition:</label>
+                  <select
+                    className={'form-control'}
+                    name='item-condition'
+                    value={condition}
+                    placeholder='Item Condition'
+                    onChange={(event) => {
+                      setCondition(event.target.value);
+                    }}
+                  >
+                    <SelectListOptions options={props.conditions} />
                   </select>
                 </div>
               </div>
@@ -151,10 +160,10 @@ function ItemEdit(props) {
             </div>
           </div>
         </div>
+        <div className='d-flex justify-content-end m-4'>
+          <button className={'btn btn-dark submit'}>Create Item</button>
+        </div>
       </form>
-      <div className='d-flex justify-content-end m-4'>
-        <button className={'btn btn-dark'}>Create Item</button>
-      </div>
     </Fragment>
   );
 }

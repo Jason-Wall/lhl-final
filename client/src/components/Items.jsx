@@ -26,13 +26,13 @@ function Items(props) {
         <h1>Ending Soon</h1>
         <hr />
       </div>
-      <div className="itemsContainerEndingSoon">
+      <div className="itemsContainer">
         {props.endingSoon.map((item) => {
           let image = props.images.find((image) => image.item_id === item.id);
           return (
             <div className="itemContainer">
               <Link to={`/items/${item.id}`} key={item.id}>
-                <Item photo={image.img_url}></Item>
+                <Item photo={image.img_url} alt={item.title} ></Item>
               </Link>
             </div>
           );
