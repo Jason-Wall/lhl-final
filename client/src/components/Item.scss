@@ -1,9 +1,6 @@
-/* this class makes all of the images the same size without stretching them DO NOT CHANGE*/
-.item {
-  float: left;
-  width:  20vw;
-  height: 40vh;
-  object-fit: cover;
-  border-radius: 4px;
+@import "sassPartial";
+
+.image  {
+  @include imageSize()
 }
 

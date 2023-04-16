@@ -5,9 +5,9 @@ import "./Item.scss"; //not sure if this is correct
 function Item(props) {
   return (
     <img
-      className="item"
+      className="image"
       src={props.photo}
-      alt="props.title we need to add this"
+      alt={props.title}
       width="400"
       height="400"
     />

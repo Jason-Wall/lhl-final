@@ -2,14 +2,12 @@
 
 $margin-top: 180px;
 
-//light theme colors
+// colors
 $darkest: hsl(228, 19%, 5%);
 $dark: hsl(213, 24%, 16%);
 $light: hsl(210, 2%, 78%);
 $colourLight: hsl(176, 96%, 69%);
 $colourDark: hsl(177, 40%, 45%);
-
-//dark theme colors
 
 //create a variable with multiple values (a list)
 $scheme-light: $light, $darkest;
@@ -20,6 +18,20 @@ $scheme-dark: $dark, $dark;
   background-color: $text;
   color: $bg;
 }
+
+/* this mixin makes all of the images the same size without stretching them DO NOT CHANGE*/
+@mixin imageSize(){
+  float: left;
+  width:  20vw;
+  height: 40vh;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+// .nav {
+//   if mode === lighting-color
+//   @include color-scheme($scheme-dark...);
+// } or do we use media queries
 
 .darkMode {
   //when passing in a list as arguments use three dots

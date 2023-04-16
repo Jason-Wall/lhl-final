@@ -76,7 +76,7 @@ function ItemDetail() {
             {/* because this data is nested in itemObj and it is an additional async query, it may take longer to load so we check to make sure it exists and has length before rendering */}
             {itemObj.img_url && itemObj.img_url.length > 0 && (
               <img
-                className="imageContainer"
+                className="image"
                 src={itemObj.img_url[0].img_url}
                 alt={itemObj.title}
               />
