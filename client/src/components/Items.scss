@@ -18,3 +18,31 @@
 .top-element {
   margin-top: $margin-top;
 }
+
+.featuredImage  {
+  @include featuredImageSize()
+}
+
+.test {
+  //create layout for the component using css grid
+  display: grid;
+  //if we specify columns, but not rows, it assumes there can be more than one row.
+  //create two columns
+  grid-template-columns: 33% 66%;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+//style the contents of the images div using flexbox
+.left {
+  display: flex;
+  align-items: left;
+  flex-direction: row;
+}
+
+//style the contents of the info div using flexbox
+.right {
+  display: flex;
+  align-items: left;
+  flex-direction: row;
+}

@@ -22,7 +22,7 @@ function Items(props) {
   return (
     <div className="top-element">
       <h1>Sell Fast Buy Smart</h1>
-      <div className="category-title">
+      <div>
         <h1>Ending Soon</h1>
         <hr />
       </div>
@@ -32,14 +32,25 @@ function Items(props) {
           return (
             <div className="itemContainer">
               <Link to={`/items/${item.id}`} key={item.id}>
-                <Item photo={image.img_url} alt={item.title} ></Item>
+                <img
+                  className="featuredImage"
+                  src={image.img_url}
+                  alt={item.title}
+                />
+                {/* <Item photo={image.img_url} title={item.title}></Item> */}
               </Link>
             </div>
           );
         })}
       </div>
-      <h1>All Items</h1>
-      <hr />
+      <div classNames="test">
+        <div className="left">
+          <h1>All Items</h1>
+        </div>
+        <div className="right">
+          <hr />
+        </div>
+      </div>
       <div className="itemsContainer">{arrayOfItemPhotos}</div>
     </div>
   );
