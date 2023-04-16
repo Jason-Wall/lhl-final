@@ -10,15 +10,16 @@ function Nav(props) {
   return (
     <div className='nav nav-bar'>
       <div className="nav top-nav">
-        <div className="nav logo">
+        <div className="nav logo btn mb1 bg-black">
           <Link to={'/'}>
           <h1>SFBS</h1></Link>
         </div>
         <div className="nav search"><Search items={props.items}/></div>
         <div className="nav right-nav">
-          <div className='nav btn'>Sell Now</div>  
-          <div className='nav btn'>Profile</div>
-          <div className='nav btn'>My Bids</div>
+          <div className='btn mb1 bg-black'><Link to={'/items/new'}>
+          Sell Now</Link></div>  
+          <div className='btn mb1 bg-black'>Profile</div>
+          <div className='btn mb1 bg-black'>My Bids</div>
       </div>
       </div>
       <div className="nav bottom-nav"> 
@@ -26,7 +27,7 @@ function Nav(props) {
           {categories.map(category => (
               <Link
               to={`/categories/${category.id}`}
-              className='btn'
+              className='btn mb1 bg-black'
             >
                <h2>{category.title}</h2>
             </Link>
