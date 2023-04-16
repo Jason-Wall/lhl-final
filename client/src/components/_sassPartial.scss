@@ -1,5 +1,29 @@
-// To use these variables, past @import "sassPartial"; at the top of your scss file
+// To use these variables, paste @import "sassPartial"; at the top of your scss file
 
+//light theme colors
+$darkest: hsl(228, 19%, 5%);
+$dark: hsl(213, 24%, 16%);
+$light: hsl(210, 2%, 78%);
+$colourLight: hsl(176, 96%, 69%);
+$colourDark: hsl(177, 40%, 45%);
 
+//dark theme colors
 
-$red: red
+//create a variable with multiple values (a list)
+$scheme-light: $light, $darkest;
+$scheme-dark: $dark, $dark;
+
+//color scheme mixin
+@mixin color-scheme($text, $bg) {
+  background-color: $text;
+  color: $bg;
+}
+
+.darkMode {
+  //when passing in a list as arguments use three dots
+  @include color-scheme($scheme-light...)
+}
+
+.lightMode {
+  @include color-scheme($scheme-dark...)
+}
