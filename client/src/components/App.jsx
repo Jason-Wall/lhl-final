@@ -9,7 +9,7 @@ import Nav from "./Nav";
 import useApplicationData from "../hooks/useApplicationData";
 
 // Import styling:
-import "./App.css";
+import "./App.scss";
 
 // MAIN FUNCTION
 export default function App() {
