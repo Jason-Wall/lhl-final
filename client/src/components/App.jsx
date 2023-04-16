@@ -27,7 +27,16 @@ export default function App() {
       <Nav items={state.items} categories={state.categories} />
       <main className="main">
         <Routes>
-          <Route path="/" element={<Items images={state.images} endingSoon={state.itemsEndingSoon} />}></Route>
+          <Route
+            path="/"
+            element={
+              <Items
+                images={state.images}
+                endingSoon={state.itemsEndingSoon}
+                items={state.items}
+              />
+            }
+          ></Route>
           <Route path="items/:itemId" element={<ItemDetail />}></Route>
           <Route
             path="items/new"
@@ -35,7 +44,9 @@ export default function App() {
           ></Route>
           <Route
             path="/categories/:categoryId"
-            element={<Category categories={state.categories} images={state.images} />}
+            element={
+              <Category categories={state.categories} images={state.images} />
+            }
           ></Route>
           <Route path="/bids" element={<AllBids />}></Route>
           <Route
