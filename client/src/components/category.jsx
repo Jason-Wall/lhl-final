@@ -2,39 +2,39 @@ import React from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import Item from './Item'
 
-import Item from './Item';
-import './Items.scss';
 
 function Category(props) {
   const params = useParams();
 
-  let itemsInCategory = [];
+  const [itemsInCategory, setItemsInCategory] = useState([]);
   
-
+  useEffect(() => {
   axios.get(`/categories/:categoryId`, {
     params: {
       id: params.categoryId
     }
   })
-  .then(res => {
-    console.log(res)
-    itemsInCategory = res
-  })
+  .then((res) => {
+    console.log("reswithdata", res.data)
+    setItemsInCategory(res.data)
+   })
+}, [params])
 
-  // images is an array of objects
-  let arrayOfItemPhotos = props.images.map((image) => {
-    return (
-      <Link
-        to={'/items/' + image.item_id}
-        key={image.item_id}
-      >
-        <Item photo={image.img_url}></Item>
-      </Link>
-    );
-  });
-
-  return <div className='itemsContainer'>{arrayOfItemPhotos}</div>;
+return <div className='itemsContainer'>
+{itemsInCategory.map((item) => {
+return (
+  <Link
+    to={`/items/${item.id}`}
+    key={item.id}>
+       <Item photo={item.img_url}></Item>
+      <h2>{item.title}</h2>
+  </Link>
+);
+})}
+</div>;
 }
 
 export default Category;
