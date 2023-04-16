@@ -1,17 +1,46 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './ItemEdit.scss';
 
 function ItemEdit(props) {
+  // MANAGE STATE
   const [title, setTitle] = useState(props.item || '');
   const [description, setDescription] = useState(props.item.description || '');
+  const [condition, setCondition] = useState(props.item.condition || '');
   const [category, setCategory] = useState(props.item.category || '');
-  const [auctionEnd, setAuctionEnd] = useState(props.item.auctionEnd || '');
+  const [endDate, setEndDate] = useState(props.item.endDate || '');
+  const [minBid, setMinBid] = useState(props.item.minBid);
+
+  // SUPPORTING FUNCTIONS:
+  // Collects form data from state and submits an axios.post
+  // Process is the same for new and edit, backend handles logic to prevent duplicate objects.
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const itemData = {
+      user_id: 1, // HARDCODED USER ID!
+      category: parseInt(category),
+      title,
+      description,
+      condition: parseInt(condition),
+      endDate,
+    };
+
+    axios
+      .post('/items/new', itemData)
+      .then((response) => {
+        console.log('Server response:', response.data);
+      })
+      .catch((error) => {
+        console.error('Error submitting form:', error);
+      });
+  };
 
   return (
     <form
+      onSubmit={handleSubmit}
       className='itemNew'
       autoComplete='off'
-      onSubmit={(event) => event.preventDefault()}
     >
       <span className='strong'>List a new item:</span>
       <br />
@@ -39,9 +68,21 @@ function ItemEdit(props) {
         ></textarea>
       </div>
       <div>
+        <label htmlFor='item-condition'>Condition:</label>
+        <input
+          type='number'
+          name='item-condition'
+          value={condition}
+          placeholder='Item Condition'
+          onChange={(event) => {
+            setCondition(event.target.value);
+          }}
+        />
+      </div>
+      <div>
         <label htmlFor='item-category'>Category:</label>
         <input
-          type='integer'
+          type='number'
           name='item-category'
           value={category}
           placeholder='Item Category'
@@ -53,19 +94,18 @@ function ItemEdit(props) {
       <div>
         <label htmlFor='item-auction'>Auction End:</label>
         <input
-          type='date'
+          type='datetime-local'
           name='item-auction'
-          value={auctionEnd}
-          placeholder='Item Category'
+          value={endDate}
+          placeholder='Auction End'
           onChange={(event) => {
-            setAuctionEnd(event.target.value);
+            setEndDate(event.target.value);
           }}
         />
       </div>
 
       <div className='modal-buttons'>
-        <button className='create'>Create Item</button>
-        <button className='cancel'>Cancel</button>
+        <button>Create Item</button>
       </div>
     </form>
   );
