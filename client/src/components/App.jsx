@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Items from './Items';
 import Nav from './Nav';
 import ItemDetail from './ItemDetail';
-import ItemNew from './ItemNew';
+import ItemEdit from './ItemEdit';
 import Category from './Category';
 
 // Import hooks and helpers:
@@ -39,7 +39,7 @@ export default function App() {
           ></Route>
           <Route
             path='items/new'
-            element={<ItemNew />}
+            element={<ItemEdit />}
           ></Route>
           <Route
             path='/categories/:categoryId'

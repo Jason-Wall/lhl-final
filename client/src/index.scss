@@ -2,15 +2,21 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 body {
   margin: 0;
-  }/*to get rid of default margin*/
-  
+} /*to get rid of default margin*/
+
 .root {
   display: flex;
   flex-direction: column;
+}
+
+.strong {
+  font-weight: bold;
 }
