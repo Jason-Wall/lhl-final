@@ -1,15 +1,16 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Import components:
-import Items from "./Items";
-import Nav from "./Nav";
+import Items from './Items';
+import Nav from './Nav';
+import ItemDetail from './ItemDetail';
 
 // Import hooks and helpers:
-import useApplicationData from "../hooks/useApplicationData";
+import useApplicationData from '../hooks/useApplicationData';
 
 // Import styling:
-import "./App.scss";
+import './App.scss';
 
 // MAIN FUNCTION
 export default function App() {
@@ -20,8 +21,18 @@ export default function App() {
   return (
     <BrowserRouter>
       <main>
-        <Nav items={state.items}/>
-        <Items images={state.images} />
+        <Nav items={state.items} />
+
+        <Routes>
+          <Route
+            path='/'
+            element={<Items images={state.images} />}
+          ></Route>
+          <Route
+            path='items/:itemId'
+            element={<ItemDetail />}
+          ></Route>
+        </Routes>
       </main>
     </BrowserRouter>
   );
