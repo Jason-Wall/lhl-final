@@ -11,7 +11,6 @@ erouter.get("/", (req, res) => {
 
 // GET /items/:id   - Gets all info for one item
 erouter.get("/:id", (req, res) => {
-  console.log("req.params", req.params);
   itemsdb.getItemInfo(req.params.id).then((itemInfo) => {
     res.send(itemInfo);
   });
