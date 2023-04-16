@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import './ItemEdit.scss';
 
-function ItemEdit() {
-  const [title, setTitle] = useState();
+function ItemEdit(props) {
+  const [title, setTitle] = useState(props.item || '');
+  const [description, setDescription] = useState(props.item.description || '');
+  const [category, setCategory] = useState(props.item.category || '');
+  const [auctionEnd, setAuctionEnd] = useState(props.item.auctionEnd || '');
 
   return (
-    <form className='itemNew'>
+    <form
+      className='itemNew'
+      autoComplete='off'
+      onSubmit={(event) => event.preventDefault()}
+    >
       <span className='strong'>List a new item:</span>
       <br />
       <div>
@@ -13,7 +20,10 @@ function ItemEdit() {
         <input
           type='text'
           name='item-title'
-          value=''
+          value={title}
+          onChange={(event) => {
+            setTitle(event.target.value);
+          }}
           placeholder='Item Title'
         />
       </div>
@@ -21,7 +31,11 @@ function ItemEdit() {
         <label for='item-description'>Description:</label>
         <textarea
           name='item-description'
+          value={description}
           placeholder='Item Description'
+          onChange={(event) => {
+            setDescription(event.target.value);
+          }}
         ></textarea>
       </div>
       <div>
@@ -29,8 +43,11 @@ function ItemEdit() {
         <input
           type='integer'
           name='item-category'
-          value=''
+          value={category}
           placeholder='Item Category'
+          onChange={(event) => {
+            setCategory(event.target.value);
+          }}
         />
       </div>
       <div>
@@ -38,13 +55,16 @@ function ItemEdit() {
         <input
           type='date'
           name='item-category'
-          value=''
+          value={auctionEnd}
           placeholder='Item Category'
+          onChange={(event) => {
+            setAuctionEnd(event.target.value);
+          }}
         />
       </div>
 
       <div className='modal-buttons'>
-        <button class='create'>Create Map!</button>
+        <button class='create'>Create Item</button>
         <button class='cancel'>Cancel</button>
       </div>
     </form>

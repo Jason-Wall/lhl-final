@@ -39,7 +39,7 @@ export default function App() {
           ></Route>
           <Route
             path='items/new'
-            element={<ItemEdit />}
+            element={<ItemEdit item={false} />}
           ></Route>
           <Route
             path='/categories/:categoryId'
