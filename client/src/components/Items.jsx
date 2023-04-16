@@ -21,33 +21,39 @@ function Items(props) {
 
   return (
     <div className="top-element">
-      <h1>Sell Fast Buy Smart</h1>
-      <div>
-        <h1>Ending Soon</h1>
-        <hr />
+      <h1 className="siteName">Sell Fast Buy Smart</h1>
+
+      <div className="titleContainer">
+        <div className="title">
+          <h1>Ending Soon!</h1>
+        </div>
+        <div className="hr">
+          <hr />
+        </div>
       </div>
-      <div className="itemsContainer">
+
+      <div className="endingSoon">
         {props.endingSoon.map((item) => {
           let image = props.images.find((image) => image.item_id === item.id);
           return (
             <div className="itemContainer">
               <Link to={`/items/${item.id}`} key={item.id}>
+                {/* rather than linking to an item or creating a new component, we render an image directly here with a special class to style the photos smaller */}
                 <img
                   className="featuredImage"
                   src={image.img_url}
                   alt={item.title}
                 />
-                {/* <Item photo={image.img_url} title={item.title}></Item> */}
               </Link>
             </div>
           );
         })}
       </div>
-      <div classNames="test">
-        <div className="left">
+      <div className="titleContainer">
+        <div className="title">
           <h1>All Items</h1>
         </div>
-        <div className="right">
+        <div className="hr">
           <hr />
         </div>
       </div>

@@ -20,10 +20,11 @@
 }
 
 .featuredImage  {
-  @include featuredImageSize()
+  @include featuredImageSize();
+  margin-left: 30px;
 }
 
-.test {
+.titleContainer {
   //create layout for the component using css grid
   display: grid;
   //if we specify columns, but not rows, it assumes there can be more than one row.
@@ -33,16 +34,32 @@
   margin-right: 4em;
 }
 
-//style the contents of the images div using flexbox
-.left {
+//style the contents of the title div using flexbox
+.title {
+  display: flex;
+  align-items: left;
+  flex-direction: row;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+//style the ending soon photos
+.endingSoon {
   display: flex;
   align-items: left;
   flex-direction: row;
 }
 
-//style the contents of the info div using flexbox
-.right {
+//style the contents of the horizontal rule div using flexbox
+.hr {
   display: flex;
   align-items: left;
   flex-direction: row;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.siteName {
+  text-align: center;
+  font-size: 9em;
 }
