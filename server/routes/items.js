@@ -16,4 +16,10 @@ erouter.get("/:id", (req, res) => {
   });
 });
 
+// POST /items/new - Create new item
+erouter.post("/new", (req, res) => {
+  itemsdb.createItem(req.body);
+});
+
+
 module.exports = erouter;
