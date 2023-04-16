@@ -16,7 +16,7 @@ function ItemEdit(props) {
       <span className='strong'>List a new item:</span>
       <br />
       <div>
-        <label for='item-title'>Title:</label>
+        <label htmlFor='item-title'>Title:</label>
         <input
           type='text'
           name='item-title'
@@ -28,7 +28,7 @@ function ItemEdit(props) {
         />
       </div>
       <div>
-        <label for='item-description'>Description:</label>
+        <label htmlFor='item-description'>Description:</label>
         <textarea
           name='item-description'
           value={description}
@@ -39,7 +39,7 @@ function ItemEdit(props) {
         ></textarea>
       </div>
       <div>
-        <label for='item-category'>Category:</label>
+        <label htmlFor='item-category'>Category:</label>
         <input
           type='integer'
           name='item-category'
@@ -51,10 +51,10 @@ function ItemEdit(props) {
         />
       </div>
       <div>
-        <label for='item-expiry'>Auction End:</label>
+        <label htmlFor='item-auction'>Auction End:</label>
         <input
           type='date'
-          name='item-category'
+          name='item-auction'
           value={auctionEnd}
           placeholder='Item Category'
           onChange={(event) => {
@@ -64,8 +64,8 @@ function ItemEdit(props) {
       </div>
 
       <div className='modal-buttons'>
-        <button class='create'>Create Item</button>
-        <button class='cancel'>Cancel</button>
+        <button className='create'>Create Item</button>
+        <button className='cancel'>Cancel</button>
       </div>
     </form>
   );
