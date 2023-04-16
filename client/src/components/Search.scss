@@ -1,5 +1,16 @@
+div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-bar-with-results {
+  flex-direction: column;
+}
 //Tyler I commented this out because it is affecting all the divs.  maybe make a class instead
 
+.search-bar-text {
+  flex-direction: row;
+}
 // div {
 //   display: flex;
 //   justify-content: space-around;
