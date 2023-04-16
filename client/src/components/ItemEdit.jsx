@@ -27,7 +27,7 @@ function ItemEdit(props) {
     };
 
     axios
-      .post('/items/new', itemData)
+      .put('/items/new', itemData)
       .then((response) => {
         console.log('Server response:', response.data);
       })
@@ -38,6 +38,7 @@ function ItemEdit(props) {
 
   return (
     <form
+      onSubmit={handleSubmit}
       className='itemNew'
       autoComplete='off'
     >
