@@ -12,7 +12,9 @@ function Search(props) {
 
 
   const handleBlur = (event) => {
-    setSearchInput("")
+    setTimeout(( )=> {
+      setSearchInput("")
+    }, 100)
   };
 
   const handleChange = (event) => {
