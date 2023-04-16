@@ -19,15 +19,15 @@ function ItemEdit(props) {
 
     const itemData = {
       user_id: 1, // HARDCODED USER ID!
-      category,
+      category: parseInt(category),
       title,
       description,
-      condition,
+      condition: parseInt(condition),
       endDate,
     };
 
     axios
-      .put('/items/new', itemData)
+      .post('/items/new', itemData)
       .then((response) => {
         console.log('Server response:', response.data);
       })
@@ -70,7 +70,7 @@ function ItemEdit(props) {
       <div>
         <label htmlFor='item-condition'>Condition:</label>
         <input
-          type='integer'
+          type='number'
           name='item-condition'
           value={condition}
           placeholder='Item Condition'
@@ -82,7 +82,7 @@ function ItemEdit(props) {
       <div>
         <label htmlFor='item-category'>Category:</label>
         <input
-          type='integer'
+          type='number'
           name='item-category'
           value={category}
           placeholder='Item Category'
