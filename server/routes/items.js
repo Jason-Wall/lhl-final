@@ -1,7 +1,6 @@
 const express = require("express");
 const erouter = express.Router();
-const itemsdb = require('../db/queries/itemsdb');
-
+const itemsdb = require("../db/queries/itemsdb");
 
 // GET /items   - Gets all items
 erouter.get("/", (req, res) => {
@@ -10,8 +9,11 @@ erouter.get("/", (req, res) => {
   });
 });
 
+// GET /items/:id   - Gets all info for one item
+erouter.get("/:id", (req, res) => {
+  itemsdb.getItemInfo().then((itemInfo) => {
+    res.send(itemInfo);
+  });
+});
 
 module.exports = erouter;
-
-
-
