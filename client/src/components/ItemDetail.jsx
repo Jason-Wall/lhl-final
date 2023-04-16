@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 
 function ItemDetail() {
   const params = useParams();
-
   const [itemObj, setItemObj] = useState({});
 
   useEffect(() => {
@@ -21,10 +20,29 @@ function ItemDetail() {
         console.log(error.response.data);
       });
   }, []);
-
+  console.log(itemObj);
+  const bidToDollars = function (value) {
+    return (itemObj.bid_value / 100).toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+  };
   return (
     <div className="itemDetail">
-      I am an {itemObj.description}Item Detail {params.itemId}
+      <h1>
+        {itemObj.title}
+        <hr />
+      </h1>
+      <span>
+        <img
+          className="imageContainer"
+          src={itemObj.img_url}
+          alt={itemObj.title}
+        />
+      </span>
+      <span>{itemObj.description}</span>
+      <span>Current Bid: {bidToDollars(itemObj.bid_value)}</span>
+      <button>BID NOW!</button> <span>Condition: {itemObj.condition}</span>
     </div>
   );
 }
