@@ -25,15 +25,31 @@ function Search(props) {
 
 
   return (
-    <div className='nav search-bar-with-results'>
-      <div className='nav search-bar-text'>
-      <input 
+  <div className='nav search-bar-with-results'>
+    {/* <div class="input-group ps-5">
+    <div id="navbar-search-autocomplete" class="form-outline">
+      <input type="search" id="form1" class="form-control" />
+      <label class="form-label" for="form1">Search</label>
+    </div>
+    <button type="button" class="btn btn-primary">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</div> */}
+
+
+
+
+ <div className='input-group'>
+   <input 
+        id='search-bar'
+        className='form-control'
         type="text"
         placeholder="Search items ..."
         onChange={handleChange}
         value={searchInput}
       />
-      <button className={'btn'} type={'submit'}>
+      <button className={'btn btn-primary'} type={'submit'}>
         <FontAwesomeIcon icon={icon({ name: 'magnifying-glass' })} />
       </button>
       </div>
