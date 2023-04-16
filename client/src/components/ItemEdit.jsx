@@ -13,7 +13,6 @@ function ItemEdit(props) {
 
   // SUPPORTING FUNCTIONS:
   // Collects form data from state and submits an axios.post
-  // Process is the same for new and edit, backend handles logic to prevent duplicate objects.
   const handleSubmit = (event) => {
     event.preventDefault();
 
