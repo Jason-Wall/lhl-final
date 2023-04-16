@@ -13,13 +13,13 @@ const getAllItems = () => {
 };
 
 // getItem - Get object of one Item
-const getItemInfo = () => {
+const getItemInfo = (id) => {
   return db
     .query(
       `SELECT * FROM items 
     JOIN item_images ON items.id = item_images.item_id 
     JOIN bids ON items.id = bids.item_id
-    WHERE items.id = 1;`
+    WHERE items.id = ${id};`
     )
     .then((itemInfo) => {
       return itemInfo.rows;
