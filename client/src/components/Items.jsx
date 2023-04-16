@@ -18,14 +18,21 @@ function Items(props) {
   });
   console.log(props.endingSoon)
 
-    return  <div className="itemsContainer">{arrayOfItemPhotos}</div>
-  //  <><h1>Ending Soon</h1>
-  // <div className="itemsContainer">
-
-  // </div>
-  // <h1>Sell Fast Buy Smart</h1>
-  // <div className="itemsContainer">{arrayOfItemPhotos}</div>
-  // </>
+    return  <div className="top-element">
+      <h1>Sell Fast Buy Smart</h1>
+    <div className="category-title"><h1>Ending Soon</h1><hr /></div>
+  <div className="itemsContainerEndingSoon">
+  {props.endingSoon.map((item) => { 
+    let image = props.images.find(image => image.item_id === item.id)
+    return ( <div className="itemContainer">
+      <Link to={`/items/${item.id}`} key={item.id} >
+        <Item photo={image.img_url}></Item>
+      </Link>
+   </div> )})}
+  </div>
+  <h1>All Items</h1><hr />
+  <div className="itemsContainer">{arrayOfItemPhotos}</div>
+  </div>
 }
 
 export default Items;

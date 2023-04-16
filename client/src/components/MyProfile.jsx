@@ -52,7 +52,6 @@ const MyProfile = ({ users, items, bids, images }) => {
           to={`/items/${item.id}`}
           key={item.id}>
           <Item photo={img.img_url}></Item>
-          <h2>{item.title}</h2>
         </Link>
       );
     })}
