@@ -1,0 +1,9 @@
+//this will space out our item photos
+
+.itemsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 4em;
+  margin-right: 4em;
+}
