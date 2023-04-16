@@ -10,6 +10,11 @@ function Search(props) {
 
   const [searchInput, setSearchInput] = useState("");
 
+
+  const handleBlur = (event) => {
+    setSearchInput("")
+  };
+
   const handleChange = (event) => {
     event.preventDefault();
     setSearchInput(event.target.value);
@@ -48,15 +53,16 @@ function Search(props) {
         placeholder="Search items ..."
         onChange={handleChange}
         value={searchInput}
+        onBlur={handleBlur}
       />
-      <button className={'btn btn-primary'} type={'submit'}>
+      <button className={'btn btn-primary mb1 bg-black'} type={'submit'}>
         <FontAwesomeIcon icon={icon({ name: 'magnifying-glass' })} />
       </button>
       </div>
       <ul className='results'>
         {filteredItems.map(item => (
           <Link to={`/items/${item.id}`}>
-    <p>{item.title}</p></Link>
+    <p className='result-list'>{item.title}</p></Link>
     ))}
         </ul>
     </div>
