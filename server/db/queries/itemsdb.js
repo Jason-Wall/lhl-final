@@ -79,8 +79,22 @@ const createItem = (item) => {
     });
 };
 
+// getItemsEndingSoon 
+const getItemsEndingSoon = () => {
+  return db
+    .query(`SELECT * FROM items WHERE end_date >= NOW() ORDER BY end_date ASC LIMIT 10;`)
+    .then((items) => {
+      console.log(items.rows)
+      return items.rows;
+    })
+    .catch(function (xhr, status, error) {
+      console.log("Error: " + error);
+    });
+};
+
 module.exports = {
   getAllItems,
   getItemInfo,
   createItem,
+  getItemsEndingSoon
 };
