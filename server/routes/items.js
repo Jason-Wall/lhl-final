@@ -1,6 +1,7 @@
 const express = require("express");
 const erouter = express.Router();
 const itemsdb = require("../db/queries/itemsdb");
+const bidsdb = require("../db/queries/bidsdb");
 
 // GET /items   - Gets all items
 erouter.get("/", (req, res) => {
@@ -15,5 +16,13 @@ erouter.get("/:id", (req, res) => {
     res.send(itemInfo);
   });
 });
+
+// POST /items/new - Create new item
+erouter.post("/new", (req, res) => {
+  itemsdb.createItem(req.body)
+    .then(() => bidsdb.createBid(req.body))
+    .then(() => console.log('item and bid success'));
+});
+
 
 module.exports = erouter;
