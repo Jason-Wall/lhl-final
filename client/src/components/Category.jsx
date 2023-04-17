@@ -18,7 +18,6 @@ function Category(props) {
     }
   })
   .then((res) => {
-    console.log("reswithdata", res.data)
     setItemsInCategory(res.data)
    })
 }, [params])

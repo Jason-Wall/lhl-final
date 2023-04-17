@@ -29,9 +29,19 @@ const getBidsForUser = (userId) => {
 
 
 const createBid = (bidInfo) => {
+  const query = {
+    text: `INSERT INTO bids (user_id, item_id, bid_value) 
+      VALUES ($1, $2, $3) RETURNING *;`,
+    values: [bidInfo.user_id, bidInfo.item_id, bidInfo.bid_value],
+  };
   return db
-    .query(`INSERT INTO bids (user_id, item_id, bid_value) VALUES 
-  (4, 1, 400000);`);
+    .query(query)
+    .then((bidInfo) => {
+      return bidInfo.rows;
+    })
+    .catch(function (xhr, status, error) {
+      console.log("Error: " + error);
+    });
 };
 
 

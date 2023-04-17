@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 function Nav(props) {
 
   let categories = props.categories
-  console.log(props.categories)
 
   return (
     <div className='nav nav-bar'>
