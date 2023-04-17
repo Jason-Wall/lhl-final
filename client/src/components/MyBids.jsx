@@ -16,7 +16,6 @@ const MyBids = (props) => {
       }
     })
       .then((res) => {
-        console.log("mybids", res.data)
         setMyBids(res.data);
       });
   }, [params]);

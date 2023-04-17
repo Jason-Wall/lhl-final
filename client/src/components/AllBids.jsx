@@ -13,7 +13,6 @@ const AllBids = (props) => {
     })
       .then((res) => {
         setAllBids(res.data);
-        console.log("%%%%%%", res.data)
       });
   }, []);
 
