@@ -70,7 +70,7 @@ function ItemDetail() {
     <>
       {/* check to see if the itemObj exists before rendering the jsx */}
       {itemObj && (
-        <div className="itemDetail">
+        <div className="itemDetail top-element">
           <div className="images">
             <h1>{itemObj.title}</h1>
             {/* because this data is nested in itemObj and it is an additional async query, it may take longer to load so we check to make sure it exists and has length before rendering */}

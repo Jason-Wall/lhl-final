@@ -1,6 +1,7 @@
+@import "sassPartial";
+
 //this will space out our item photos
 .itemsContainer {
-  margin-top: 180px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 1rem;
@@ -12,4 +13,8 @@
 .itemContainer {
   display: flex;
   justify-content: center;
+}
+
+.top-element {
+  margin-top: $margin-top;
 }

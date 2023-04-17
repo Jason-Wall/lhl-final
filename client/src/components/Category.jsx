@@ -30,7 +30,7 @@ console.log(params)
 console.log(currentCategory)
 console.log(itemsInCategory)
 
-return <><div className='category-title' > 
+return <><div className='category-title top-element' > 
 <h1>
 {currentCategory ? currentCategory.title : "loading..."} 
 <hr />

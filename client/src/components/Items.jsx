@@ -18,8 +18,10 @@ function Items(props) {
   });
   console.log(props.endingSoon)
 
-    return  <><div className="category-title"><h1>Ending Soon</h1></div>
-  <div className="itemsContainer">
+    return  <div className="top-element">
+      <h1>Sell Fast Buy Smart</h1>
+    <div className="category-title"><h1>Ending Soon</h1><hr /></div>
+  <div className="itemsContainerEndingSoon">
   {props.endingSoon.map((item) => { 
     let image = props.images.find(image => image.item_id === item.id)
     return ( <div className="itemContainer">
@@ -28,9 +30,9 @@ function Items(props) {
       </Link>
    </div> )})}
   </div>
-  <h1>Sell Fast Buy Smart</h1>
+  <h1>All Items</h1><hr />
   <div className="itemsContainer">{arrayOfItemPhotos}</div>
-  </>
+  </div>
 }
 
 export default Items;
