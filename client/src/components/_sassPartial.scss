@@ -40,6 +40,15 @@ $scheme-nav-dark: $darkest, $lightest;
   border-radius: 4px;
 }
 
+/* this mixin makes all of the small images in itemDetail the same size without stretching them DO NOT CHANGE*/
+@mixin thumbNail(){
+  float: left;
+  width:  5vw;
+  height: 10vh;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
 .light {
   //when passing in a list as arguments use three dots
   @include color-scheme($scheme-light...)
