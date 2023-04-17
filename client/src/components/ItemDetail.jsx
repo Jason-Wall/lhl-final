@@ -10,6 +10,7 @@ function ItemDetail() {
   const params = useParams();
   const [itemObj, setItemObj] = useState({});
   const [countdown, setCountdown] = useState(null);
+  const [activeImage, setActiveImage] = useState("");
   // const [countdownInterval, setCountdownInterval] = useState(null);
   const interval = useRef();
   //useRef creates a singular reference point in memory so that on subsequent rerenders it wont rerun, it will just point to the reference it made before
@@ -76,9 +77,12 @@ function ItemDetail() {
       return;
     }
     return itemObj.img_url.map((image) => {
-      console.log("ITEMOBJ", image);
       return (
-        <ThumbNail photo={image.img_url} title={itemObj.title}></ThumbNail>
+        <ThumbNail
+          photo={image.img_url}
+          title={itemObj.title}
+          setActiveImage={setActiveImage}
+        ></ThumbNail>
       );
     });
   };
@@ -95,12 +99,8 @@ function ItemDetail() {
               <Carousel
                 images={itemObj.img_url}
                 title={itemObj.title}
+                active={activeImage}
               ></Carousel>
-              // <img
-              //   className="image"
-              //   src={itemObj.img_url[0].img_url}
-              //   alt={itemObj.title}
-              // />
             )}
           </div>
           <div className="info">
