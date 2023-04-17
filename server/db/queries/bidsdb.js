@@ -4,7 +4,7 @@ const getBids = () => {
   return db
     .query('SELECT * FROM bids')
     .then(bids => {
-      console.log(bids.rows)
+      console.log(bids.rows);
       return bids.rows;
     })
     .catch(function (xhr, status, error) {
@@ -16,18 +16,27 @@ const getBids = () => {
 
 const getBidsForUser = (userId) => {
   return db
-  .query(`SELECT bids.*, item_images.img_url FROM bids JOIN item_images ON bids.item_id = item_images.item_id WHERE bids.user_id = 4
+    .query(`SELECT bids.*, item_images.img_url FROM bids JOIN item_images ON bids.item_id = item_images.item_id WHERE bids.user_id = 4
   AND bids.id NOT IN (SELECT MIN(id) FROM bids GROUP BY item_id)`)
-  .then(bids => {
-    console.log("%%%", bids.rows)
-    return bids.rows;
-  })
-  .catch(function (xhr, status, error) {
-    console.log("Error: " + error);
-  });
-}
+    .then(bids => {
+      console.log("%%%", bids.rows);
+      return bids.rows;
+    })
+    .catch(function (xhr, status, error) {
+      console.log("Error: " + error);
+    });
+};
+
+
+const createBid = (bidInfo) => {
+  return db
+    .query(`INSERT INTO bids (user_id, item_id, bid_value) VALUES 
+  (4, 1, 400000);`);
+};
+
 
 module.exports = {
   getBids,
-  getBidsForUser
+  getBidsForUser,
+  createBid
 };
