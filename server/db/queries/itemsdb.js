@@ -22,6 +22,7 @@ const getItemInfo = (id) => {
     WHERE items.id = ${id};`
     )
     .then((itemInfo) => {
+      console.log(itemInfo.rows);
       return itemInfo.rows;
     })
     .catch(function (xhr, status, error) {

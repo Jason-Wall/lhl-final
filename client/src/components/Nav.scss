@@ -1,18 +1,26 @@
 .nav-bar {
-  background-color: rgb(26, 255, 0);
+  background-color: black;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: fixed;
   top: 0;
+    a {
+      text-decoration: none;
+      color: white;
+    }
 
     .top-nav, .bottom-nav {
+      color: whitesmoke;
      width: 100%;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+        :hover {
+          color:white;
+        }
     }
     .categories {
       display: flex;
@@ -28,7 +36,7 @@
         }
     }
     .search {
-      background-color: grey;
+      background-color: white;
       align-items: center;
       z-index: 2;
     }

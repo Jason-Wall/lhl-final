@@ -6,17 +6,28 @@
 .search-bar-with-results {
   flex-direction: column;
   position: fixed;
+  .results {
+    min-width: 240px;
+    max-width: 240px;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: black;
+    color: white;
+    position: fixed;
+    top: 50px;
+    z-index: 1;
+    width: 100%
+  }
+  a p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .search-bar-text {
   flex-direction: row;
   z-index: 2;
-}
-
-.results {
-  background-color: antiquewhite;
-  color: black;
-  position: fixed;
-  top: 30px;
-  z-index: 1;
 }
