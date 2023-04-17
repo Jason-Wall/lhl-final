@@ -19,9 +19,17 @@ erouter.get("/:id", (req, res) => {
 
 // POST /items/new - Create new item
 erouter.post("/new", (req, res) => {
+  // console.log('/items/new - req.body:', req.body);
   itemsdb.createItem(req.body)
-    .then(() => bidsdb.createBid(req.body))
-    .then(() => console.log('item and bid success'));
+    .then((newItem) => {
+      // console.log('newItem:', newItem);
+      const bidInfo = {
+        user_id: newItem[0].user_id,
+        item_id: newItem[0].id,
+        bid_value: req.body.minBid
+      };
+      bidsdb.createBid(bidInfo);
+    });
 });
 
 

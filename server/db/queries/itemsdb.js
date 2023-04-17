@@ -32,7 +32,6 @@ const getItemInfo = (id) => {
 
 // createItem - Creates new item
 const createItem = (item) => {
-  console.log('in createItem', item);
   const query = {
     text: `INSERT INTO items (user_id, category_id, title, description, condition, end_date) 
       VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`,
@@ -43,7 +42,6 @@ const createItem = (item) => {
   return db
     .query(query)
     .then((itemInfo) => {
-      console.log(itemInfo.rows);
       return itemInfo.rows;
     })
     .catch(function (xhr, status, error) {
