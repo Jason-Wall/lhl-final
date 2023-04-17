@@ -1,0 +1,38 @@
+.profile {
+  margin-top: 180px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 4em;
+  margin-right: 4em;
+  flex-wrap: wrap;
+}
+.profile-photo {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+.personal-info {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+.items-info {
+  margin-top: 90px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+.items {
+  margin-top: 80px;
+  margin-left: 2em;
+  margin-right: 2em;
+}

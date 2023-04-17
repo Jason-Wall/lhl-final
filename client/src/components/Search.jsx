@@ -28,7 +28,6 @@ function Search(props) {
       return item.title.toLowerCase().includes(searchInput);
     });
   }
-  console.log("filtered", filteredItems)
 
 
   return (

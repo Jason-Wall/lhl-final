@@ -24,7 +24,7 @@ const MyBids = (props) => {
   return <div className="itemsContainer">
       {myBids.map((bid) => {
         return (
-         <Link to={`/items/${bid.item_id}`}>
+         <Link key={bid.id} to={`/items/${bid.item_id}`}>
            <img
             className="item"
             src={bid.img_url}
