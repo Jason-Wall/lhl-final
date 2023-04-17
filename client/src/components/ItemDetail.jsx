@@ -68,6 +68,7 @@ function ItemDetail() {
 
   return (
     <>
+      {/* check to see if the itemObj exists before rendering the jsx */}
       {itemObj && (
         <div className="itemDetail">
           <h1>

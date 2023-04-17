@@ -34,17 +34,20 @@ const getItemInfo = (id) => {
   WHERE items.id = ${id};`
     )
     .then((itemInfo) => {
-      return db
-        .query(
-          `SELECT img_url
+      // I am making a second db query within our .then to obtain all the images for certain item
+      return (
+        db
+          .query(
+            `SELECT img_url
         FROM item_images
         WHERE item_id = ${id};`
-        )
-        .then((images) => {
-          itemInfo.rows[0].img_url = images.rows;
-          console.log("itemInfo", itemInfo.rows);
-          return itemInfo.rows;
-        });
+          )
+          // then I add another .then that creates an img_url key in the object at itemInfo.rows[0] and sets it to the result of the second db query for images
+          .then((images) => {
+            itemInfo.rows[0].img_url = images.rows;
+            return itemInfo.rows;
+          })
+      );
     })
     .catch(function (xhr, status, error) {
       console.log("Error: " + error);
