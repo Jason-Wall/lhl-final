@@ -54,9 +54,7 @@ function ItemDetail() {
       });
     // Clear the countdown interval on unmount to prevent memory leaks
     return () => {
-      // clearInterval(countdownInterval);
-      setCountdownInterval(null);
-      setCountdown(null);
+      clearInterval(countdownInterval);
     };
   }, [params]);
 
@@ -76,13 +74,16 @@ function ItemDetail() {
             {itemObj.title}
             <hr />
           </h1>
-          <span>
-            <img
-              className="imageContainer"
-              src={itemObj.img_url[0].img_url}
-              alt={itemObj.title}
-            />
-          </span>
+          {/* because this data is nested in itemObj and it is an additional async query, it may take longer to load so we check to make sure it exists and has length before rendering */}
+          {itemObj.img_url && itemObj.img_url.length > 0 && (
+            <span>
+              <img
+                className="imageContainer"
+                src={itemObj.img_url[0].img_url}
+                alt={itemObj.title}
+              />
+            </span>
+          )}
           <span>{itemObj.description}</span>
           <span>Current Bid: {bidToDollars(itemObj.bid_value)}</span>
           <button>BID NOW!</button> <span>Condition: {itemObj.condition}</span>
