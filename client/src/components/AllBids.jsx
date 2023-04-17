@@ -22,13 +22,13 @@ const AllBids = (props) => {
       {allBids.map((bid) => {
         return (
          <Link to={`/items/${bid.item_id}`}>
-           {/* <img
+           <img
             className="item"
             src={bid.img_url}
             alt={"bid.title we need to add this"}
             width="400"
             height="400"
-    /> */}
+    />
           <h1>{bid.bid_value}</h1>
         </Link>
         );
