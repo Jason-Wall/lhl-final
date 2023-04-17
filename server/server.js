@@ -30,6 +30,7 @@ const itemRoutes = require("./routes/items");
 const userRoutes = require("./routes/users");
 const imageRoutes = require("./routes/images");
 const categoryRoutes = require("./routes/categories");
+const bidRoutes = require("./routes/bids");
 
 //Endpoints - Currently lives inside of server - As we scale up we need to move
 // into routes folder for each (user, items, category, etc.)
@@ -39,6 +40,7 @@ app.use("/items/:id", itemRoutes);
 app.use("/users", userRoutes);
 app.use("/images", imageRoutes);
 app.use("/categories", categoryRoutes);
+app.use("/bids", bidRoutes)
 
 app.listen(port, () => {
   console.log(`app is listening on ${port}`);
