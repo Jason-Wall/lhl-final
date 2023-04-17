@@ -9,6 +9,7 @@ import ItemEdit from "./ItemEdit";
 import Category from "./Category";
 import MyBids from "./MyBids";
 import AllBids from "./AllBids"
+import MyProfile from './MyProfile';
 
 // Import hooks and helpers:
 import useApplicationData from '../hooks/useApplicationData';
@@ -37,7 +38,9 @@ export default function App() {
             element={<Category images={state.images} />}
           ></Route>
           <Route path="/bids" element={<AllBids />}></Route>
-           <Route path="/bids/:userId" element={<MyBids />}></Route>
+          <Route path="/profile/:userId" element={<MyProfile users={state.users} items={state.items} bids={state.bids} images={state.images} />}></Route>
+          <Route path="/items/:userId" element={<MyBids />}></Route>
+          <Route path="/logout" element={<MyBids />}></Route>
         </Routes>
       </main>
     </BrowserRouter>
