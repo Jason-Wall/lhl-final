@@ -2,12 +2,13 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Import components:
-import Items from './Items';
-import Nav from './Nav';
-import ItemDetail from './ItemDetail';
-import ItemEdit from './ItemEdit';
-import Category from './Category';
-import MyBids from './MyBids';
+import Items from "./Items";
+import Nav from "./Nav";
+import ItemDetail from "./ItemDetail";
+import ItemEdit from "./ItemEdit";
+import Category from "./Category";
+import MyBids from "./MyBids";
+import AllBids from "./AllBids"
 
 // Import hooks and helpers:
 import useApplicationData from '../hooks/useApplicationData';
@@ -35,8 +36,8 @@ export default function App() {
             path='/categories/:categoryId'
             element={<Category images={state.images} />}
           ></Route>
-          <Route path='/bids' element={<MyBids />}></Route>
-          <Route path='/bids/:userId' element={<MyBids />}></Route>
+          <Route path="/bids" element={<AllBids />}></Route>
+           <Route path="/bids/:userId" element={<MyBids />}></Route>
         </Routes>
       </main>
     </BrowserRouter>
