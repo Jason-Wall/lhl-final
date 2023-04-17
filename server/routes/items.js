@@ -2,6 +2,7 @@ const express = require("express");
 const erouter = express.Router();
 const itemsdb = require("../db/queries/itemsdb");
 const bidsdb = require("../db/queries/bidsdb");
+const imagesdb = require("../db/queries/imagesdb");
 
 // GET /items   - Gets all items
 erouter.get("/", (req, res) => {
@@ -17,7 +18,7 @@ erouter.get("/:id", (req, res) => {
   });
 });
 
-// POST /items/new - Create new item and accompanying bid.
+// POST /items/new - Create new item and accompanying bid and image.
 erouter.post("/new", (req, res) => {
   itemsdb.createItem(req.body)
     .then((newItem) => {
@@ -27,8 +28,16 @@ erouter.post("/new", (req, res) => {
         item_id: newItem[0].id,
         bid_value: req.body.minBid
       };
-      bidsdb.createBid(bidInfo);
-    });
+      const imageInfo = {
+        item_id: newItem[0].id,
+        img_url: 'https://i.imgur.com/ZL8IQtP.jpeg'
+      };
+      Promise.all([
+        bidsdb.createBid(bidInfo),
+        imagesdb.createImage(imageInfo),
+      ]);
+    })
+    .then(() => console.log('bid and image creation successful'));
 });
 
 
