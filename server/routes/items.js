@@ -17,12 +17,11 @@ erouter.get("/:id", (req, res) => {
   });
 });
 
-// POST /items/new - Create new item
+// POST /items/new - Create new item and accompanying bid.
 erouter.post("/new", (req, res) => {
-  // console.log('/items/new - req.body:', req.body);
   itemsdb.createItem(req.body)
     .then((newItem) => {
-      // console.log('newItem:', newItem);
+      // Use info from the new item to populate the bid:
       const bidInfo = {
         user_id: newItem[0].user_id,
         item_id: newItem[0].id,
