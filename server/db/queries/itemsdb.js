@@ -53,10 +53,6 @@ const getItemInfo = (id) => {
 
 // createItem - Creates new item
 const createItem = (item) => {
-<<<<<<< HEAD
-  console.log("in createItem", item);
-=======
->>>>>>> 16e1ace146b4aad0e3ce1a76e2f3e80df9b6ebe7
   const query = {
     text: `INSERT INTO items (user_id, category_id, title, description, condition, end_date) 
       VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`,
