@@ -27,7 +27,7 @@ export default function App() {
       <Nav items={state.items} categories={state.categories} />
       <main className="main">
         <Routes>
-          <Route path="/" element={<Items images={state.images} />}></Route>
+          <Route path="/" element={<Items images={state.images} endingSoon={state.itemsEndingSoon} />}></Route>
           <Route path="items/:itemId" element={<ItemDetail />}></Route>
           <Route
             path="items/new"
