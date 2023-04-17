@@ -1,5 +1,8 @@
 import React, { useState, Fragment } from 'react';
 import axios from 'axios';
+
+import SelectListOptions from './general/SelectListOptions';
+
 import './ItemEdit.scss';
 
 function ItemEdit(props) {
@@ -12,7 +15,6 @@ function ItemEdit(props) {
   const [minBid, setMinBid] = useState(props.item.minBid);
 
   // SUPPORTING FUNCTIONS:
-  //populates options from
 
   // Collects form data from state and submits an axios.post
   const handleSubmit = (event) => {
@@ -20,11 +22,12 @@ function ItemEdit(props) {
 
     const itemData = {
       user_id: 1, // HARDCODED USER ID!
-      category: parseInt(category),
       title,
       description,
-      condition: parseInt(condition),
       endDate,
+      category: parseInt(category),
+      condition: parseInt(condition),
+      minBid: parseInt(minBid * 100),
     };
 
     axios
@@ -39,11 +42,7 @@ function ItemEdit(props) {
 
   return (
     <div className='itemEdit container'>
-      <form
-        onSubmit={handleSubmit}
-        className='itemNew'
-        autoComplete='off'
-      >
+      <form onSubmit={handleSubmit} className='itemNew' autoComplete='off'>
         <span className={'strong'}>List a new item:</span>
         <br />
         <div className={'form-group'}>
@@ -86,16 +85,15 @@ function ItemEdit(props) {
         </div>
         <div className={'form-group'}>
           <label htmlFor='item-category'>Category:</label>
-          <input
-            className={'form-control'}
-            type='number'
+          <select
+            className={'custom-select'}
             name='item-category'
+            placeholder='Choose a Category'
             value={category}
-            placeholder='Item Category'
-            onChange={(event) => {
-              setCategory(event.target.value);
-            }}
-          />
+            onChange={(event) => setCategory(event.target.value)}
+          >
+            <SelectListOptions options={props.categories} />
+          </select>
         </div>
         <div className={'form-group'}>
           <label htmlFor='item-bid'>Minimum Bid:</label>
