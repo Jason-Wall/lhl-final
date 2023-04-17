@@ -42,11 +42,19 @@ $scheme-dark: $dark, $dark;
 //   @include color-scheme($scheme-dark...);
 // } or do we use media queries
 
-.darkMode {
+.dark {
   //when passing in a list as arguments use three dots
   @include color-scheme($scheme-light...)
 }
 
-.lightMode {
+.light {
   @include color-scheme($scheme-dark...)
+}
+
+.dark .nav {
+
+}
+
+.light .nav {
+
 }
