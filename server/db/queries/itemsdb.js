@@ -8,7 +8,7 @@ const getAllItems = () => {
       return items.rows;
     })
     .catch(function (xhr, status, error) {
-      console.log("Error: " + error);
+      console.log("Error:1 " + error);
     });
 };
 
@@ -50,7 +50,7 @@ const getItemInfo = (id) => {
       );
     })
     .catch(function (xhr, status, error) {
-      console.log("Error: " + error);
+      console.log("Error:2 " + error);
     });
 };
 
@@ -75,20 +75,21 @@ const createItem = (item) => {
       return itemInfo.rows;
     })
     .catch(function (xhr, status, error) {
-      console.log("Error: " + error);
+      console.log("Error:3 " + error);
     });
 };
 
 // getItemsEndingSoon 
 const getItemsEndingSoon = () => {
   return db
-    .query(`SELECT * FROM items WHERE end_date >= NOW() ORDER BY end_date ASC LIMIT 10;`)
+    .query("SELECT * FROM items WHERE end_date >= NOW() ORDER BY end_date ASC LIMIT 10;")
     .then((items) => {
-      console.log(items.rows)
       return items.rows;
     })
     .catch(function (xhr, status, error) {
-      console.log("Error: " + error);
+      console.log("Error:4 " + error);
+      console.log(xhr)
+      console.log(status)
     });
 };
 

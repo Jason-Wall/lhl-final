@@ -21,7 +21,7 @@ function Items(props) {
     return  <div className="itemsContainer">{arrayOfItemPhotos}</div>
   //  <><h1>Ending Soon</h1>
   // <div className="itemsContainer">
-
+  
   // </div>
   // <h1>Sell Fast Buy Smart</h1>
   // <div className="itemsContainer">{arrayOfItemPhotos}</div>

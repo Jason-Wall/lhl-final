@@ -11,17 +11,17 @@ erouter.get("/", (req, res) => {
   });
 });
 
-// GET /items/:id   - Gets all info for one item
-erouter.get("/:id", (req, res) => {
-  itemsdb.getItemInfo(req.params.id).then((itemInfo) => {
-    res.send(itemInfo);
-  });
-});
-
 // get 10 items ending soon
 erouter.get("/ending-soon", (req, res) => {
   itemsdb.getItemsEndingSoon().then((items) => {
     res.send(items);
+  });
+});
+
+// GET /items/:id   - Gets all info for one item
+erouter.get("/:id", (req, res) => {
+  itemsdb.getItemInfo(req.params.id).then((itemInfo) => {
+    res.send(itemInfo);
   });
 });
 
