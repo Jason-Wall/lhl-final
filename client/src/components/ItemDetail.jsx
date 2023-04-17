@@ -3,6 +3,7 @@ import "./ItemDetail.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ThumbNail from "./ThumbNail";
+import Carousel from "./Carousel";
 
 function ItemDetail() {
   // Get the itemId from the URL parameters
@@ -91,11 +92,15 @@ function ItemDetail() {
             <h1>{itemObj.title}</h1>
             {/* because this data is nested in itemObj and it is an additional async query, it may take longer to load so we check to make sure it exists and has length before rendering */}
             {itemObj.img_url && itemObj.img_url.length > 0 && (
-              <img
-                className="image"
-                src={itemObj.img_url[0].img_url}
-                alt={itemObj.title}
-              />
+              <Carousel
+                images={itemObj.img_url}
+                title={itemObj.title}
+              ></Carousel>
+              // <img
+              //   className="image"
+              //   src={itemObj.img_url[0].img_url}
+              //   alt={itemObj.title}
+              // />
             )}
           </div>
           <div className="info">

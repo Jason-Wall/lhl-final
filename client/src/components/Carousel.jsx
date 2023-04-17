@@ -1,20 +1,23 @@
 import React from "react";
 import Item from "./Item";
 
-function Carousel() {
+function Carousel(props) {
+  console.log("carouselprops", props.images);
   return (
     <div id="carouselExample" class="carousel slide">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          {/* <Item photo={image.img_url} title={item.title}></Item> */}
-          <img src="..." class="d-block w-100" alt="..." />
+          <Item photo={props.images[0].img_url} title={props.title}></Item>
+          {/* <img src="..." class="d-block w-100" alt={props.title} /> */}
         </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="..." />
-        </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="..." />
-        </div>
+        {props.images.slice(1).map((image) => {
+          return (
+            <div class="carousel-item">
+              {/* <img src="..." class="d-block w-100" alt="..." /> */}
+              <Item photo={image.img_url} title={props.title}></Item>
+            </div>
+          );
+        })}
       </div>
       <button
         class="carousel-control-prev"
