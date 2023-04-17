@@ -19,10 +19,10 @@ erouter.get("/:id", (req, res) => {
 
 // POST /items/new - Create new item
 erouter.post("/new", (req, res) => {
-  itemsdb.createItem(req.body)
+  itemsdb
+    .createItem(req.body)
     .then(() => bidsdb.createBid(req.body))
-    .then(() => console.log('item and bid success'));
+    .then(() => console.log("item and bid success"));
 });
-
 
 module.exports = erouter;

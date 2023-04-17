@@ -12,18 +12,39 @@ const getAllItems = () => {
     });
 };
 
+// .query(
+//   `SELECT items.*,
+//   (SELECT ARRAY_AGG(img_url)
+//   FROM item_images
+//   WHERE item_id = ${id}) AS images,
+// bids.*
+// FROM items
+// JOIN bids ON items.id = bids.item_id
+// WHERE items.id = ${id};`
+// )
+
 // getItem - Get object of one Item
 const getItemInfo = (id) => {
   return db
     .query(
-      `SELECT * FROM items 
-    JOIN item_images ON items.id = item_images.item_id 
-    JOIN bids ON items.id = bids.item_id
-    WHERE items.id = ${id};`
+      `SELECT items.*, 
+    bids.*
+  FROM items
+  JOIN bids ON items.id = bids.item_id
+  WHERE items.id = ${id};`
     )
     .then((itemInfo) => {
-      console.log(itemInfo.rows);
-      return itemInfo.rows;
+      return db
+        .query(
+          `SELECT img_url
+        FROM item_images
+        WHERE item_id = ${id};`
+        )
+        .then((images) => {
+          itemInfo.rows[0].img_url = images.rows;
+          console.log("itemInfo", itemInfo.rows);
+          return itemInfo.rows;
+        });
     })
     .catch(function (xhr, status, error) {
       console.log("Error: " + error);
@@ -32,13 +53,19 @@ const getItemInfo = (id) => {
 
 // createItem - Creates new item
 const createItem = (item) => {
-  console.log('in createItem', item);
+  console.log("in createItem", item);
   const query = {
     text: `INSERT INTO items (user_id, category_id, title, description, condition, end_date) 
       VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`,
-    values: [item.user_id, item.category, item.title, item.description, item.condition, item.endDate],
+    values: [
+      item.user_id,
+      item.category,
+      item.title,
+      item.description,
+      item.condition,
+      item.endDate,
+    ],
   };
-
 
   return db
     .query(query)
@@ -54,5 +81,5 @@ const createItem = (item) => {
 module.exports = {
   getAllItems,
   getItemInfo,
-  createItem
+  createItem,
 };
