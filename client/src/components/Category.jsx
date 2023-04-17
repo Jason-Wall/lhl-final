@@ -5,12 +5,15 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Item from './Item'
 
+import './Category.scss';
 
-function Category(props) {
+
+function Category({categories}) {
   const params = useParams();
 
   const [itemsInCategory, setItemsInCategory] = useState([]);
-  
+  const [currentCategory, setCurrentCategory] = useState({});
+
   useEffect(() => {
   axios.get(`/categories/:categoryId`, {
     params: {
@@ -19,21 +22,30 @@ function Category(props) {
   })
   .then((res) => {
     setItemsInCategory(res.data)
+    setCurrentCategory(categories.find(category => category.id === Number(params.categoryId)))
    })
 }, [params])
 
-return <div className='itemsContainer'>
+console.log(params)
+console.log(currentCategory)
+console.log(itemsInCategory)
+
+return <><div className='category-title' > 
+<h1>
+{currentCategory ? currentCategory.title : "loading..."} 
+<hr />
+</h1></div>
+<div className='categoryItemsContainer'>
 {itemsInCategory.map((item) => {
 return (
   <Link
     to={`/items/${item.id}`}
     key={item.id}>
        <Item photo={item.img_url}></Item>
-      <h2>{item.title}</h2>
   </Link>
 );
 })}
-</div>;
+</div> </>;
 }
 
 
