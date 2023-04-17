@@ -12,7 +12,8 @@ function ItemEdit(props) {
   const [condition, setCondition] = useState(props.item.condition || '');
   const [category, setCategory] = useState(props.item.category || '');
   const [endDate, setEndDate] = useState(props.item.endDate || '');
-  const [minBid, setMinBid] = useState(props.item.minBid);
+  const [minBid, setMinBid] = useState(props.item.minBid || 0);
+  const [imgUrl, setImgUrl] = useState(props.item.imgUrl || 'https://i.imgur.com/87xMgGQ.png');
 
   // SUPPORTING FUNCTIONS:
 
@@ -25,6 +26,7 @@ function ItemEdit(props) {
       title,
       description,
       endDate,
+      imgUrl,
       category: parseInt(category),
       condition: parseInt(condition),
       minBid: parseInt(minBid * 100),
@@ -56,6 +58,19 @@ function ItemEdit(props) {
               setTitle(event.target.value);
             }}
             placeholder='Item Title'
+          />
+        </div>
+        <div className={'form-group'}>
+          <label htmlFor='item-url'>Item URL:</label>
+          <input
+            className={'form-control'}
+            type='text'
+            name='item-url'
+            value={imgUrl}
+            onChange={(event) => {
+              setImgUrl(event.target.value);
+            }}
+            placeholder='Item Image Url'
           />
         </div>
         <div className={'form-group'}>

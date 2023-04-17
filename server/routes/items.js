@@ -20,22 +20,24 @@ erouter.get("/:id", (req, res) => {
 
 // POST /items/new - Create new item and accompanying bid and image.
 erouter.post("/new", (req, res) => {
+  let newItem = {};
   itemsdb.createItem(req.body)
-    .then((newItem) => {
+    .then((res) => {
+      newItem = res[0];
       // Use info from the new item to populate the bid:
       const bidInfo = {
-        user_id: newItem[0].user_id,
-        item_id: newItem[0].id,
+        user_id: newItem.user_id,
+        item_id: newItem.id,
         bid_value: req.body.minBid
       };
+      bidsdb.createBid(bidInfo);
+    })
+    .then(() => {
       const imageInfo = {
-        item_id: newItem[0].id,
-        img_url: 'https://i.imgur.com/ZL8IQtP.jpeg'
+        item_id: newItem.id,
+        img_url: req.body.imgUrl
       };
-      Promise.all([
-        bidsdb.createBid(bidInfo),
-        imagesdb.createImage(imageInfo),
-      ]);
+      imagesdb.createImage(imageInfo);
     })
     .then(() => console.log('bid and image creation successful'));
 });
