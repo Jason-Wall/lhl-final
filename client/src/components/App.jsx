@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Import components:
@@ -16,7 +16,6 @@ import useApplicationData from "../hooks/useApplicationData";
 
 // Import styling:
 import "./App.scss";
-import { useState } from "react";
 
 // MAIN FUNCTION
 export default function App() {
@@ -29,7 +28,12 @@ export default function App() {
     <BrowserRouter>
       {/* create a button that sets this theme set theme  = !theme*/}
       <div className={`${theme ? "light" : "dark"}`}>
-        <Nav items={state.items} categories={state.categories} />
+        <Nav
+          items={state.items}
+          categories={state.categories}
+          theme={theme}
+          setTheme={setTheme}
+        />
         <main className="main">
           <Routes>
             <Route

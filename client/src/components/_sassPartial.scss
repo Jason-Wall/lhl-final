@@ -1,22 +1,25 @@
 // To use these variables, paste @import "sassPartial"; at the top of your scss file
 
-$margin-top: 180px;
+$margin-top: 130px;
 
 // colors
 $darkest: hsl(228, 19%, 5%);
 $dark: hsl(213, 24%, 16%);
 $light: hsl(210, 2%, 78%);
+$lightest:	hsl(0, 0%, 95%);
 $colourLight: hsl(176, 96%, 69%);
 $colourDark: hsl(177, 40%, 45%);
 
 //create a variable with multiple values (a list)
-$scheme-light: $light, $darkest;
-$scheme-dark: $dark, $dark;
+$scheme-light: $lightest, $dark;
+$scheme-dark: $dark, $light;
+$scheme-nav-light: $dark, $lightest;
+$scheme-nav-dark: $darkest, $lightest;
 
 //color scheme mixin
-@mixin color-scheme($text, $bg) {
-  background-color: $text;
-  color: $bg;
+@mixin color-scheme($bg, $text) {
+  background-color: $bg;
+  color: $text;
 }
 
 /* this mixin makes all of the images the same size without stretching them DO NOT CHANGE*/
@@ -37,24 +40,20 @@ $scheme-dark: $dark, $dark;
   border-radius: 4px;
 }
 
-// .nav {
-//   if mode === lighting-color
-//   @include color-scheme($scheme-dark...);
-// } or do we use media queries
-
-.dark {
+.light {
   //when passing in a list as arguments use three dots
   @include color-scheme($scheme-light...)
 }
 
-.light {
+.dark {
   @include color-scheme($scheme-dark...)
 }
 
-.dark .nav {
-
-}
-
 .light .nav {
-
+  @include color-scheme($scheme-nav-light...)
 }
+
+.dark .nav {
+  @include color-scheme($scheme-nav-dark...)
+}
+
