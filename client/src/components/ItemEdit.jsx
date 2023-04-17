@@ -1,4 +1,4 @@
-import React, { useState, useNavigate } from 'react';
+import React, { useState, useNavigate, Fragment } from 'react';
 import axios from 'axios';
 
 import SelectListOptions from './general/SelectListOptions';
@@ -43,103 +43,119 @@ function ItemEdit(props) {
   };
 
   return (
-    <div className='itemEdit container'>
-      <form onSubmit={handleSubmit} className='itemNew' autoComplete='off'>
-        <span className={'strong'}>List a new item:</span>
-        <br />
-        <div className={'form-group'}>
-          <label htmlFor='item-title'>Title:</label>
-          <input
-            className={'form-control'}
-            type='text'
-            name='item-title'
-            value={title}
-            onChange={(event) => {
-              setTitle(event.target.value);
-            }}
-            placeholder='Item Title'
-          />
-        </div>
-        <div className={'form-group'}>
-          <label htmlFor='item-url'>Item URL:</label>
-          <input
-            className={'form-control'}
-            type='text'
-            name='item-url'
-            value={imgUrl}
-            onChange={(event) => {
-              setImgUrl(event.target.value);
-            }}
-            placeholder='Item Image Url'
-          />
-        </div>
-        <div className={'form-group'}>
-          <label htmlFor='item-description'>Description:</label>
-          <textarea
-            className={'form-control'}
-            name='item-description'
-            value={description}
-            placeholder='Item Description'
-            onChange={(event) => {
-              setDescription(event.target.value);
-            }}
-          ></textarea>
-        </div>
-        <div className={'form-group'}>
-          <label htmlFor='item-condition'>Condition:</label>
-          <input
-            className={'form-control'}
-            type='number'
-            name='item-condition'
-            value={condition}
-            placeholder='Item Condition'
-            onChange={(event) => {
-              setCondition(event.target.value);
-            }}
-          />
-        </div>
-        <div className={'form-group'}>
-          <label htmlFor='item-category'>Category:</label>
-          <select
-            className={'custom-select'}
-            name='item-category'
-            placeholder='Choose a Category'
-            value={category}
-            onChange={(event) => setCategory(event.target.value)}
-          >
-            <SelectListOptions options={props.categories} />
-          </select>
-        </div>
-        <div className={'form-group'}>
-          <label htmlFor='item-bid'>Minimum Bid:</label>
-          <input
-            className={'form-control'}
-            type='number'
-            name='item-bid'
-            value={minBid}
-            placeholder='Minimum Bid'
-            onChange={(event) => {
-              setMinBid(event.target.value);
-            }}
-          />
-        </div>
-        <div className={'form-group'}>
-          <label htmlFor='item-auction'>Auction End:</label>
-          <input
-            className={'form-control'}
-            type='datetime-local'
-            name='item-auction'
-            value={endDate}
-            placeholder='Auction End'
-            onChange={(event) => {
-              setEndDate(event.target.value);
-            }}
-          />
-        </div>
+    <Fragment>
+      <form onSubmit={handleSubmit} autoComplete='off'>
+        <div className={'itemEdit'}></div>
+        <div className={'m-4'}>
+          <span className={'strong'}>List a new item:</span>
+          <div className={'d-flex'}>
+            <div className={'d-flex flex-column col-4'}>
+              <img
+                className={'imageContainer img-fluid'}
+                src='https://i.imgur.com/0MBBOMT.jpeg'
+              ></img>
+              <div className={'form-group m-1'}>
+                <label htmlFor='item-url'>Item URL:</label>
+                <input
+                  className={'form-control'}
+                  type='text'
+                  name='item-url'
+                  value={imgUrl}
+                  onChange={(event) => {
+                    setImgUrl(event.target.value);
+                  }}
+                  placeholder='Item Image Url'
+                />
+              </div>
+            </div>
 
-        <button className={'btn btn-dark'}>Create Item</button>
+            <div className={'flex-column col-8 justify-content-between'}>
+              <div className={'form-group m-1'}>
+                <label htmlFor='item-title'>Title:</label>
+                <input
+                  className={'form-control'}
+                  type='text'
+                  name='item-title'
+                  value={title}
+                  onChange={(event) => {
+                    setTitle(event.target.value);
+                  }}
+                  placeholder='Item Title'
+                />
+              </div>
+              <div className={'form-group m-1'}>
+                <label htmlFor='item-description'>Description:</label>
+                <textarea
+                  className={'form-control'}
+                  name='item-description'
+                  value={description}
+                  placeholder='Item Description'
+                  onChange={(event) => {
+                    setDescription(event.target.value);
+                  }}
+                ></textarea>
+              </div>
+              <div className={'row'}>
+                <div className={'form-group col m-1'}>
+                  <label htmlFor='item-condition'>Condition:</label>
+                  <input
+                    className={'form-control'}
+                    type='number'
+                    name='item-condition'
+                    value={condition}
+                    placeholder='Item Condition'
+                    onChange={(event) => {
+                      setCondition(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className={'form-group col m-1'}>
+                  <label htmlFor='item-category'>Category:</label>
+                  <select
+                    className={'form-control'}
+                    name='item-category'
+                    placeholder='Choose a Category'
+                    value={category}
+                    onChange={(event) => setCategory(event.target.value)}
+                  >
+                    <SelectListOptions options={props.categories} />
+                  </select>
+                </div>
+              </div>
+              <div className={'form-group m-1'}>
+                <label htmlFor='item-bid'>Minimum Bid:</label>
+                <input
+                  className={'form-control'}
+                  type='number'
+                  name='item-bid'
+                  value={minBid}
+                  placeholder='Minimum Bid'
+                  onChange={(event) => {
+                    setMinBid(event.target.value);
+                  }}
+                />
+              </div>
+              <div className={'form-group m-1'}>
+                <label htmlFor='item-auction'>Auction End:</label>
+                <input
+                  className={'form-control'}
+                  type='datetime-local'
+                  name='item-auction'
+                  value={endDate}
+                  placeholder='Auction End'
+                  onChange={(event) => {
+                    setEndDate(event.target.value);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
-    </div>
+      <div className='d-flex justify-content-end m-4'>
+        <button className={'btn btn-dark'}>Create Item</button>
+      </div>
+    </Fragment>
   );
 }
 
