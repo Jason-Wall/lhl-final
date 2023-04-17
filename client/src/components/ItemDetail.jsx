@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 function ItemDetail() {
+  // Get the itemId from the URL parameters
   const params = useParams();
   const [itemObj, setItemObj] = useState({});
   const [countdown, setCountdown] = useState(null);
@@ -11,9 +12,12 @@ function ItemDetail() {
 
   useEffect(() => {
     axios
+      //fetch item data from the server
       .get(`/items/${params.itemId}`)
       .then((res) => {
+        // Set the item object state with the response data
         setItemObj(res.data[0]);
+        // Set a countdown timer to display how much time is left until the bidding closes
         const countdownDate = new Date(res.data[0].end_date);
         const intervalId = setInterval(() => {
           const now = new Date();
@@ -26,7 +30,7 @@ function ItemDetail() {
             (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
           );
           const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
+          // If the countdown is complete, clear the interval and display a message
           if (timeDifference < 0) {
             clearInterval(intervalId);
             setCountdown("Bids are closed!");
@@ -39,7 +43,7 @@ function ItemDetail() {
             setCountdown(countdownString);
           }
         }, 1000);
-
+        // Set the countdown interval ID to state for cleanup on unmount
         setCountdownInterval(intervalId);
       })
       .catch((error) => {
@@ -47,12 +51,13 @@ function ItemDetail() {
         console.log(error.response.headers);
         console.log(error.response.data);
       });
-
+    // Clear the countdown interval on unmount to prevent memory leaks
     return () => {
       clearInterval(countdownInterval);
     };
-  }, []);
+  }, [params]);
 
+  // Helper function to convert bid value to a dollar amount
   const bidToDollars = function (value) {
     return (itemObj.bid_value / 100).toLocaleString("en-US", {
       style: "currency",
