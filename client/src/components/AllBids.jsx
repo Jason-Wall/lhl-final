@@ -1,38 +1,34 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
-const MyBids = (props) => {
+const AllBids = (props) => {
 
-  const params = useParams();
-  const [myBids, setMyBids] = useState([]);
+  const [allBids, setAllBids] = useState([]);
 
 
   useEffect(() => {
-    axios.get('/bids/:userId', {
-      params: {
-        id: params.userId
-      }
+    axios.get('/bids', {
     })
       .then((res) => {
-        console.log("mybids", res.data)
-        setMyBids(res.data);
+        setAllBids(res.data);
+        console.log("%%%%%%", res.data)
       });
-  }, [params]);
+  }, []);
 
  
   return <div className="itemsContainer">
-      {myBids.map((bid) => {
+      {allBids.map((bid) => {
         return (
          <Link to={`/items/${bid.item_id}`}>
-           <img
+           {/* <img
             className="item"
             src={bid.img_url}
             alt={"bid.title we need to add this"}
             width="400"
             height="400"
-    />
+    /> */}
           <h1>{bid.bid_value}</h1>
         </Link>
         );
@@ -42,4 +38,4 @@ const MyBids = (props) => {
   ;
 };
 
-export default MyBids;
+export default AllBids;
