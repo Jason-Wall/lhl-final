@@ -5,7 +5,6 @@ import Item from "./Item";
 import "./Items.scss";
 
 function Items(props) {
-  console.log("props.images***", props.images);
   // images is an array of objects
   // create array of Item Photos
   let arrayOfItemPhotos = props.images.map((image) => {

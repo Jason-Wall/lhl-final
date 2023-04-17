@@ -15,6 +15,7 @@ function ItemDetail() {
       //fetch item data from the server
       .get(`/items/${params.itemId}`)
       .then((res) => {
+        console.log("res.data[0]", res.data[0]);
         // Set the item object state with the response data
         setItemObj(res.data[0]);
         // Set a countdown timer to display how much time is left until the bidding closes
@@ -53,7 +54,9 @@ function ItemDetail() {
       });
     // Clear the countdown interval on unmount to prevent memory leaks
     return () => {
-      clearInterval(countdownInterval);
+      // clearInterval(countdownInterval);
+      setCountdownInterval(null);
+      setCountdown(null);
     };
   }, [params]);
 
@@ -66,23 +69,27 @@ function ItemDetail() {
   };
 
   return (
-    <div className="itemDetail">
-      <h1>
-        {itemObj.title}
-        <hr />
-      </h1>
-      <span>
-        <img
-          className="imageContainer"
-          src={itemObj.img_url}
-          alt={itemObj.title}
-        />
-      </span>
-      <span>{itemObj.description}</span>
-      <span>Current Bid: {bidToDollars(itemObj.bid_value)}</span>
-      <button>BID NOW!</button> <span>Condition: {itemObj.condition}</span>
-      <div className="countdown-timer">{countdown}</div>
-    </div>
+    <>
+      {itemObj && (
+        <div className="itemDetail">
+          <h1>
+            {itemObj.title}
+            <hr />
+          </h1>
+          <span>
+            <img
+              className="imageContainer"
+              src={itemObj.img_url[0].img_url}
+              alt={itemObj.title}
+            />
+          </span>
+          <span>{itemObj.description}</span>
+          <span>Current Bid: {bidToDollars(itemObj.bid_value)}</span>
+          <button>BID NOW!</button> <span>Condition: {itemObj.condition}</span>
+          <div className="countdown-timer">{countdown}</div>
+        </div>
+      )}
+    </>
   );
 }
 
