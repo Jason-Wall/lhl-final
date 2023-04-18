@@ -1,4 +1,6 @@
-import React, { useState, useNavigate, Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
+import { Navigate } from 'react-router-dom';
+
 import axios from 'axios';
 
 import SelectListOptions from './general/SelectListOptions';
@@ -15,11 +17,12 @@ function ItemEdit(props) {
   const [minBid, setMinBid] = useState(props.item.minBid || 0);
   const [imgUrl, setImgUrl] = useState(props.item.imgUrl || 'https://i.imgur.com/87xMgGQ.png');
 
+  const [newItemId, setNewItemId] = useState(false);
+
   // SUPPORTING FUNCTIONS:
 
   // Collects form data from state and submits an axios.post
   const handleSubmit = (event) => {
-    console.log('handleSubmit called');
     event.preventDefault();
 
     const itemData = {
@@ -35,9 +38,9 @@ function ItemEdit(props) {
 
     axios
       .post('/items/new', itemData)
-      .then((response) => {
-        console.log('Server response:', response.data);
+      .then((res) => {
         props.onSubmit(true);
+        setNewItemId(res.data.id);
       })
       .catch((error) => {
         console.error('Error submitting form:', error);
@@ -46,6 +49,7 @@ function ItemEdit(props) {
 
   return (
     <Fragment>
+      {newItemId && <Navigate to={'/items/' + newItemId} />}
       <form onSubmit={handleSubmit} autoComplete='off'>
         <div className={'itemEdit'}></div>
         <div className={'m-4'}>
@@ -55,6 +59,7 @@ function ItemEdit(props) {
               <img
                 className={'imageContainer img-fluid'}
                 src='https://i.imgur.com/0MBBOMT.jpeg'
+                alt='image_url'
               ></img>
               <div className={'form-group m-1'}>
                 <label htmlFor='item-url'>Item URL:</label>

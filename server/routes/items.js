@@ -47,7 +47,10 @@ erouter.post("/new", (req, res) => {
       };
       imagesdb.createImage(imageInfo);
     })
-    .then(() => res.send("bid and image creation successful"));
+    .then(() => {
+      console.log(newItem);
+      res.send(newItem);
+    });
 });
 
 module.exports = erouter;
