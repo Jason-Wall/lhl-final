@@ -1,13 +1,9 @@
-/* this class makes all of the images the same size without stretching them */
+/* this class makes all of the images the same size without stretching them DO NOT CHANGE*/
 .item {
   float: left;
   width:  20vw;
   height: 40vh;
   object-fit: cover;
   border-radius: 4px;
-  // margin: 5px;
-  // text-align: center;
-  // display: block;
-  // margin: 0 auto;
 }
 
