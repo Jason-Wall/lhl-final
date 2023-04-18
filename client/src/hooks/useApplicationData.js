@@ -12,7 +12,8 @@ export default function useApplicationData() {
     users: [],
     images: [],
     categories: [],
-    itemsEndingSoon: []
+    itemsEndingSoon: [],
+    conditions: []
   });
 
   //Requests for data on first page load.
@@ -22,7 +23,8 @@ export default function useApplicationData() {
       axios.get("/users"),
       axios.get("/images/first"),
       axios.get("/categories"),
-      axios.get("/items/ending-soon")
+      axios.get("/items/ending-soon"),
+      axios.get("/conditions")
     ]).then((res) => {
       // console.log(res);
       setState((prev) => ({
@@ -31,7 +33,8 @@ export default function useApplicationData() {
         users: res[1].data,
         images: res[2].data,
         categories: res[3].data,
-        itemsEndingSoon: res[4].data
+        itemsEndingSoon: res[4].data,
+        conditions: res[5].data
       }));
     });
   }, []);

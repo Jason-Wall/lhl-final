@@ -69,7 +69,7 @@ function ItemEdit(props) {
               </div>
             </div>
 
-            <div className={'flex-column col-8 justify-content-between'}>
+            <div className={'flex-column col-8'}>
               <div className={'form-group m-1'}>
                 <label htmlFor='item-title'>Title:</label>
                 <input
@@ -97,19 +97,6 @@ function ItemEdit(props) {
               </div>
               <div className={'row'}>
                 <div className={'form-group col m-1'}>
-                  <label htmlFor='item-condition'>Condition:</label>
-                  <input
-                    className={'form-control'}
-                    type='number'
-                    name='item-condition'
-                    value={condition}
-                    placeholder='Item Condition'
-                    onChange={(event) => {
-                      setCondition(event.target.value);
-                    }}
-                  />
-                </div>
-                <div className={'form-group col m-1'}>
                   <label htmlFor='item-category'>Category:</label>
                   <select
                     className={'form-control'}
@@ -117,6 +104,21 @@ function ItemEdit(props) {
                     placeholder='Choose a Category'
                     value={category}
                     onChange={(event) => setCategory(event.target.value)}
+                  >
+                    <SelectListOptions options={props.categories} />
+                  </select>
+                </div>
+
+                <div className={'form-group col m-1'}>
+                  <label htmlFor='item-condition'>Condition:</label>
+                  <select
+                    className={'form-control'}
+                    name='item-condition'
+                    value={condition}
+                    placeholder='Item Condition'
+                    onChange={(event) => {
+                      setCondition(event.target.value);
+                    }}
                   >
                     <SelectListOptions options={props.categories} />
                   </select>
