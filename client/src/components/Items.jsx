@@ -9,9 +9,11 @@ function Items(props) {
   // create array of Item Photos
   let arrayOfItemPhotos = props.images.map((image) => {
     return (
-      <Link to={"/items/" + image.item_id} key={image.item_id}>
-        <Item photo={image.img_url}></Item>
-      </Link>
+      <div className="itemContainer">
+        <Link to={"/items/" + image.item_id} key={image.item_id}>
+          <Item photo={image.img_url}></Item>
+        </Link>
+      </div>
     );
   });
 

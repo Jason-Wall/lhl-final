@@ -1,14 +1,15 @@
 //this will space out our item photos
-
 .itemsContainer {
   margin-top: 180px;
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: space-between;
-  // margin-left: 4em;
-  // margin-right: 4em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 1rem;
-  
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+//this will center the items within their divs
+.itemContainer {
+  display: flex;
+  justify-content: center;
 }

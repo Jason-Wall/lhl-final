@@ -71,24 +71,35 @@ function ItemDetail() {
       {/* check to see if the itemObj exists before rendering the jsx */}
       {itemObj && (
         <div className="itemDetail">
-          <h1>
-            {itemObj.title}
-            <hr />
-          </h1>
-          {/* because this data is nested in itemObj and it is an additional async query, it may take longer to load so we check to make sure it exists and has length before rendering */}
-          {itemObj.img_url && itemObj.img_url.length > 0 && (
-            <span>
+          <div className="images">
+            <h1 className="column1">{itemObj.title}</h1>
+            {/* because this data is nested in itemObj and it is an additional async query, it may take longer to load so we check to make sure it exists and has length before rendering */}
+            {itemObj.img_url && itemObj.img_url.length > 0 && (
               <img
-                className="imageContainer"
+                className="imageContainer column1"
                 src={itemObj.img_url[0].img_url}
                 alt={itemObj.title}
               />
+            )}
+          </div>
+          <div className="info">
+            <hr className="column2" />
+            <span className="column2 description">{itemObj.description}</span>
+          </div>
+          <div>div 3</div>
+          <div>
+            <span>
+              <span className="column2">
+                Current Bid: {bidToDollars(itemObj.bid_value)}
+              </span>{" "}
+              <br />
+              <span className="countdown-timer column2">{countdown}</span>
             </span>
-          )}
-          <span>{itemObj.description}</span>
-          <span>Current Bid: {bidToDollars(itemObj.bid_value)}</span>
-          <button>BID NOW!</button> <span>Condition: {itemObj.condition}</span>
-          <div className="countdown-timer">{countdown}</div>
+            <span>
+              <button className="column2">BID NOW!</button>
+              <span className="column2">Condition: {itemObj.condition}</span>
+            </span>
+          </div>
         </div>
       )}
     </>
