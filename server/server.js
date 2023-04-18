@@ -1,11 +1,16 @@
 const express = require("express");
+const http = require('http');
+const socketio = require('socket.io');
 
-// Morgan documents network traffic to console.
-const morgan = require("morgan");
+const port = 8001; // Define our base URL as http:\\localhost:8001
+
+const morgan = require("morgan"); // Morgan documents network traffic to console.
 const cors = require("cors");
 
 const app = express();
-const port = 8001; // Define our base URL as http:\\localhost:8001
+const server = http.createServer(app);
+const io = socketio(server);
+
 
 // Use db instance
 const db = require("./db/db");
@@ -25,6 +30,8 @@ app.use(cors());
 // loads static if applicable. Currently routed to build
 app.use(express.static("../client/build"));
 
+
+//EXPRESS
 // Separated Routes for each Resource
 const itemRoutes = require("./routes/items");
 const userRoutes = require("./routes/users");
@@ -44,6 +51,15 @@ app.use("/categories", categoryRoutes);
 app.use("/conditions", conditionRoutes);
 app.use("/bids", bidRoutes);
 
-app.listen(port, () => {
+
+
+
+// SOCKET
+// serer listener
+io.on('connection', () => {
+  console.log('someone connected');
+});
+
+server.listen(port, () => {
   console.log(`app is listening on ${port}`);
 });
