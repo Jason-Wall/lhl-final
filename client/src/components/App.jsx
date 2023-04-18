@@ -56,7 +56,7 @@ export default function App() {
                 />
               }
             ></Route>
-            <Route path="items/:itemId" element={<ItemDetail />}></Route>
+            <Route path="items/:itemId" element={<ItemDetail onSubmit={setStateRefresh}/>}></Route>
             <Route
               path="items/new"
               element={
