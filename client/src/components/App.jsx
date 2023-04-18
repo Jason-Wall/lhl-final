@@ -20,7 +20,7 @@ import './App.scss';
 // MAIN FUNCTION
 export default function App() {
   // State management and functions:
-  const { state, setState } = useApplicationData();
+  const { state, setState, setStateRefresh } = useApplicationData();
 
   return (
     <BrowserRouter>
@@ -35,7 +35,12 @@ export default function App() {
           <Route
             path='items/new'
             element={
-              <ItemEdit item={false} categories={state.categories} conditions={state.conditions} />
+              <ItemEdit
+                item={false}
+                categories={state.categories}
+                conditions={state.conditions}
+                onSubmit={setStateRefresh}
+              />
             }
           ></Route>
           <Route

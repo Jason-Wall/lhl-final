@@ -16,6 +16,8 @@ export default function useApplicationData() {
     conditions: []
   });
 
+  const [stateRefresh, setStateRefresh] = useState(false);
+
   //Requests for data on first page load.
   useEffect(() => {
     Promise.all([
@@ -37,10 +39,13 @@ export default function useApplicationData() {
         conditions: res[5].data
       }));
     });
-  }, []);
+
+    return () => setStateRefresh(false);
+  }, [stateRefresh]);
 
   return {
     state,
     setState,
+    setStateRefresh
   };
 }

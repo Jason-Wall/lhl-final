@@ -19,6 +19,7 @@ function ItemEdit(props) {
 
   // Collects form data from state and submits an axios.post
   const handleSubmit = (event) => {
+    console.log('handleSubmit called');
     event.preventDefault();
 
     const itemData = {
@@ -36,6 +37,7 @@ function ItemEdit(props) {
       .post('/items/new', itemData)
       .then((response) => {
         console.log('Server response:', response.data);
+        props.onSubmit(true);
       })
       .catch((error) => {
         console.error('Error submitting form:', error);
