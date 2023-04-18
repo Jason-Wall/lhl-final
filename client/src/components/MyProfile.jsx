@@ -1,12 +1,14 @@
 import { useParams, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Item from './Item';
+import { loginContext } from "../providers/UserContext";
 import('./MyProfile.scss');
 
 const MyProfile = ({ users, items, bids, images }) => {
 
   const params = useParams();
   const [thisUser, setThisUser] = useState({});
+  const { currentUser } = useContext(loginContext);
 
   const userId = Number(params.userId)
 
@@ -32,10 +34,15 @@ const MyProfile = ({ users, items, bids, images }) => {
     </div>
     </div>
     <div className="items">
+      {currentUser ? (
+      <h1>
+        Your Items For Sale
+        <hr />
+      </h1> ) : 
       <h1>
         Items For Sale By User
         <hr />
-      </h1>
+      </h1> }
       </div>
     <div className='items-info'>
     {itemsForUser.map((item) => {

@@ -26,6 +26,11 @@
         :hover {
           color:white;
         }
+        .login{
+          :hover{
+            color: black;
+          }
+        }
     }
     .categories {
       display: flex;
@@ -38,6 +43,11 @@
       flex-direction: row;
         div {
          margin-right: 15px;
+        }
+        .login {
+          input {
+            color: black;
+          }
         }
     }
     .search {
@@ -56,6 +66,7 @@
 }
 .dropdown {
   position: fixed;
+  color: grey !important;
 }
 
 .dropdown-content {
@@ -72,3 +83,7 @@
 }
 
 .dropdown:hover .dropdown-content {display: flex;}
+
+.login-input {
+  color: black;
+}

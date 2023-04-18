@@ -18,6 +18,13 @@ erouter.get("/:id", (req, res) => {
   });
 });
 
+// get 10 items ending soon
+erouter.get("/ending-soon", (req, res) => {
+  itemsdb.getItemsEndingSoon().then((items) => {
+    res.send(items);
+  });
+});
+
 // POST /items/new - Create new item and accompanying bid and image.
 erouter.post("/new", (req, res) => {
   let newItem = {};
