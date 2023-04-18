@@ -153,10 +153,10 @@ function ItemEdit(props) {
             </div>
           </div>
         </div>
+        <div className='d-flex justify-content-end m-4'>
+          <button className={'btn btn-dark submit'}>Create Item</button>
+        </div>
       </form>
-      <div className='d-flex justify-content-end m-4'>
-        <button className={'btn btn-dark'}>Create Item</button>
-      </div>
     </Fragment>
   );
 }
