@@ -1,4 +1,5 @@
 .itemDetail {
+  //create layout for the component using css grid
   display: grid;
   //if we specify columns, but not rows, it assumes there can be more than one row.
   //create two columns
@@ -8,27 +9,18 @@
   margin-right: 4em;
 }
 
-//create a column that is 1 fraction of the whole page
+//style the contents of the images div using flexbox
 .images {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-//create a column that is 1 fraction of the whole page
+//style the contents of the info div using flexbox
 .info {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-//anything with this class will be in column 1 and centered
-.column1 {
-  grid-column-start: 1;
-  place-self: center;
-}
-
-//anything with this class will be in column 2
-.column2 {
-  grid-column-start: 2;
+  display: flex;
+  align-items: left;
+  flex-direction: column;
 }
 
 .description {
