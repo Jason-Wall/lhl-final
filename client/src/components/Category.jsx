@@ -41,7 +41,7 @@ return (
   <Link
     to={`/items/${item.id}`}
     key={item.id}>
-       <Item photo={item.img_url}></Item>
+       <Item photo={item.img_url} alt={item.title}></Item>
   </Link>
 );
 })}
