@@ -120,7 +120,7 @@ function ItemEdit(props) {
                       setCondition(event.target.value);
                     }}
                   >
-                    <SelectListOptions options={props.categories} />
+                    <SelectListOptions options={props.conditions} />
                   </select>
                 </div>
               </div>
