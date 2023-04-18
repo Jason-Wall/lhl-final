@@ -55,11 +55,13 @@ app.use("/bids", bidRoutes);
 
 
 // SOCKET
-// serer listener
+// server listener
 io.on('connection', () => {
   console.log('someone connected');
 });
 
+
+// PORT LISTEN
 server.listen(port, () => {
   console.log(`app is listening on ${port}`);
 });
