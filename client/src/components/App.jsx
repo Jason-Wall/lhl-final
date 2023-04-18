@@ -8,12 +8,8 @@ import ItemDetail from "./ItemDetail";
 import ItemEdit from "./ItemEdit";
 import Category from "./Category";
 import MyBids from "./MyBids";
-<<<<<<< HEAD
-import AllBids from "./AllBids"
-import MyProfile from './MyProfile';
-=======
 import AllBids from "./AllBids";
->>>>>>> styleItemDetail
+import MyProfile from "./MyProfile";
 
 // Import hooks and helpers:
 import useApplicationData from "../hooks/useApplicationData";
@@ -42,13 +38,19 @@ export default function App() {
             element={<Category images={state.images} />}
           ></Route>
           <Route path="/bids" element={<AllBids />}></Route>
-<<<<<<< HEAD
-          <Route path="/profile/:userId" element={<MyProfile users={state.users} items={state.items} bids={state.bids} images={state.images} />}></Route>
+          <Route
+            path="/profile/:userId"
+            element={
+              <MyProfile
+                users={state.users}
+                items={state.items}
+                bids={state.bids}
+                images={state.images}
+              />
+            }
+          ></Route>
           <Route path="/items/:userId" element={<MyBids />}></Route>
           <Route path="/logout" element={<MyBids />}></Route>
-=======
-          <Route path="/bids/:userId" element={<MyBids />}></Route>
->>>>>>> styleItemDetail
         </Routes>
       </main>
     </BrowserRouter>
