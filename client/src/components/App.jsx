@@ -45,7 +45,7 @@ export default function App() {
           ></Route>
           <Route
             path='/categories/:categoryId'
-            element={<Category images={state.images} />}
+            element={<Category categories={state.categories} images={state.images} />}
           ></Route>
           <Route path='/bids' element={<AllBids />}></Route>
           <Route

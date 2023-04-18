@@ -37,7 +37,7 @@ const bidRoutes = require("./routes/bids");
 // into routes folder for each (user, items, category, etc.)
 
 app.use("/items", itemRoutes);
-app.use("/items/:id", itemRoutes);
+// app.use("/items/:id", itemRoutes);
 app.use("/users", userRoutes);
 app.use("/images", imageRoutes);
 app.use("/categories", categoryRoutes);

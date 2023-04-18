@@ -1,12 +1,17 @@
+@import "sassPartial";
+
 .itemDetail {
   //create layout for the component using css grid
   display: grid;
   //if we specify columns, but not rows, it assumes there can be more than one row.
   //create two columns
   grid-template-columns: 33% 66%;
-  margin-top: 180px;
   margin-left: 4em;
   margin-right: 4em;
+}
+
+.top-element {
+  margin-top: $margin-top;
 }
 
 //style the contents of the images div using flexbox
@@ -33,13 +38,8 @@ hr {
   float: right;
 }
 
-/* this class makes the images the same size without stretching it DO NOT CHANGE*/
-.imageContainer {
-    float: left;
-    width:  20vw;
-    height: 40vh;
-    object-fit: cover;
-    border-radius: 4px;
+.image {
+    @include imageSize();
     margin: 5px;
 }
 
