@@ -1,5 +1,6 @@
 const socketio = require('socket.io');
-let ioInstance = null;
+let ioInstance = null;  // Used to reference the io instance outside of the startWebSocket function
+
 
 const socketBidNotify = (bid) => {
   ioInstance.emit('bid', bid);
@@ -8,28 +9,19 @@ const socketBidNotify = (bid) => {
 function startWebSocket(server) {
   const io = socketio(server);
   ioInstance = io;
-  // SOCKET
-
-  // Where should I create the rooms?
 
   // SOCKET LISTENER
   io.on('connection', (socket) => {
     console.log('A new socket has been created.');
-    socket.currentUser = 0;
 
     socket.on('login', (userId) => {
       socket.userId = userId;
       console.log(`User # ${socket.userId} has logged in.`);
-      //1 - Query to get all user items bid items.
-      //2 - Join all item rooms
-    });
-
-    socket.on('bid', (bidInfo) => {
-      // Broadcast to room bidInfo.itemId  {User id/name, item id/name, bid price}
     });
 
     socket.on('disconnect', () => {
-      console.log(`${socket.userId} has left the building`);
+      discMessage = socket.userId ? `${socket.userId} has left the building` : `Unreg user has left`;
+      console.log(discMessage);
     });
   });
 
