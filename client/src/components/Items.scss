@@ -21,7 +21,7 @@
 
 .featuredImage  {
   @include featuredImageSize();
-  margin-left: 33px;
+  // margin-left: 33px;
 }
 
 .titleContainer {
@@ -46,8 +46,9 @@
 //style the ending soon photos
 .endingSoon {
   display: flex;
-  align-items: left;
+  align-items: center;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 //style the contents of the horizontal rule div using flexbox
@@ -62,4 +63,20 @@
 .siteName {
   text-align: center;
   font-size: 9em;
+}
+
+.bid-price {
+  opacity: 0.5;
+  position: absolute;
+  margin-left: 20px;
+  width: 8vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-Color: black;
+  color: white;
+  padding: 10px;
+  border-Radius: 5px;
+  transform: translate(-10%, -100%);
 }

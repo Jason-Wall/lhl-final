@@ -3,6 +3,13 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import './MyBids.scss'
 
+const bidToDollars = function (value) {
+  return (value / 100).toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+};
+
 const MyBids = (props) => {
   const params = useParams();
   const [myBids, setMyBids] = useState([]);
@@ -30,7 +37,7 @@ const MyBids = (props) => {
                   backgroundImage: `url(${bid.img_url})`}}
               className="bids-image"
             ></div>
-            <div class='bid-price' >{bid.bid_value}</div>
+            <div class='my-bid-price' >{bidToDollars(bid.bid_value)}</div>
           </Link>
         );
       })}

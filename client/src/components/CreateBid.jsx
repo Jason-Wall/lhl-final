@@ -18,7 +18,7 @@ const CreateBid = ({item, onSubmit}) => {
 
   useEffect(() => {
     setUserId(currentUser)
-    setItemId(item.id)
+    setItemId(item.item_id)
   }, [item, currentUser])
   
 
