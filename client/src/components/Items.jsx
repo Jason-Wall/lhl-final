@@ -7,7 +7,6 @@ function Items(props) {
   // images is an array of objects
   // create array of Item Photos
   let arrayOfItemPhotos = props.images.map((image) => {
-    console.log("image", image);
     let item = props.items.find((item) => item.id === image.item_id);
     return (
       <div className="itemContainer">
@@ -17,7 +16,6 @@ function Items(props) {
       </div>
     );
   });
-  console.log(props.endingSoon);
 
   return (
     <div className="top-element">
@@ -33,7 +31,7 @@ function Items(props) {
       </div>
 
       <div className="endingSoon">
-        {props.endingSoon.map((item) => {
+        {props.endingSoon.slice(0, 8).map((item) => {
           let image = props.images.find((image) => image.item_id === item.id);
           return (
             <div className="itemContainer">

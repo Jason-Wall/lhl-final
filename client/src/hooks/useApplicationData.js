@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 // State management
 export default function useApplicationData() {
-
+  //update to a useReducer***
   const params = useParams();
 
   const [state, setState] = useState({
@@ -13,7 +13,7 @@ export default function useApplicationData() {
     images: [],
     categories: [],
     itemsEndingSoon: [],
-    conditions: []
+    conditions: [],
   });
 
   const [stateRefresh, setStateRefresh] = useState(false);
@@ -26,7 +26,7 @@ export default function useApplicationData() {
       axios.get("/images/first"),
       axios.get("/categories"),
       axios.get("/items/ending-soon"),
-      axios.get("/conditions")
+      axios.get("/conditions"),
     ]).then((res) => {
       // console.log(res);
       setState((prev) => ({
@@ -36,7 +36,7 @@ export default function useApplicationData() {
         images: res[2].data,
         categories: res[3].data,
         itemsEndingSoon: res[4].data,
-        conditions: res[5].data
+        conditions: res[5].data,
       }));
     });
 
@@ -45,7 +45,7 @@ export default function useApplicationData() {
 
   return {
     state,
-    setState,
-    setStateRefresh
+    setState, //dispatch (if we do this correctly we might not need other functions)
+    setStateRefresh, //additional functions
   };
 }
