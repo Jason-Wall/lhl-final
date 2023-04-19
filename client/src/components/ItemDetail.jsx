@@ -4,8 +4,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import ThumbNail from "./ThumbNail";
 import Carousel from "./Carousel";
+import CreateBid from "./CreateBid";
 
-function ItemDetail() {
+function ItemDetail(props) {
   // Get the itemId from the URL parameters
   const params = useParams();
   const [itemObj, setItemObj] = useState({});
@@ -121,6 +122,7 @@ function ItemDetail() {
           </div>
         </div>
       )}
+      <CreateBid item={itemObj} onSubmit={props.onSubmit}/>
     </>
   );
 }
