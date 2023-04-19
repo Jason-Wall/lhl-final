@@ -86,7 +86,7 @@ export default function App() {
                 />
               }
             ></Route>
-            <Route path="/items/:userId" element={<MyBids />}></Route>
+            <Route path="/bids/:userId" element={<MyBids />}></Route>
             <Route path="/logout" element={<MyBids />}></Route>
           </Routes>
         </main>

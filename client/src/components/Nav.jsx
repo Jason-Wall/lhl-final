@@ -59,7 +59,7 @@ function Nav(props) {
                 </div>
               </div>
               <div className="btn mb1 bg-black">
-                <Link to={`bids/${4}`}>My Bids</Link>
+                <Link to={`bids/${currentUser}`}>My Bids</Link>
               </div>
             </>
           ) : (

@@ -1,9 +1,8 @@
-import React, { useState, Fragment, useEffect } from 'react';
+import React, { useState, Fragment, useEffect, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import axios from 'axios';
-
-import SelectListOptions from './general/SelectListOptions';
+import { loginContext } from "../providers/UserContext";
 
 import "./CreateBid.scss";
 
@@ -11,15 +10,16 @@ const CreateBid = ({item, onSubmit}) => {
 
 
 
-  const [userId, setUserId] = useState(1)
+  const [userId, setUserId] = useState(null)
   const [itemId, setItemId] = useState(null);
   const [bidValue, setBidValue] = useState(null)
+  const { currentUser, login, logout } = useContext(loginContext);
 
 
   useEffect(() => {
-    // setUserId(currentUser)
+    setUserId(currentUser)
     setItemId(item.id)
-  }, [item])
+  }, [item, currentUser])
   
 
   // values: [bidInfo.user_id, bidInfo.item_id, bidInfo.bid_value],

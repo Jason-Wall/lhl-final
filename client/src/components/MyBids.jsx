@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
 const MyBids = (props) => {
   const params = useParams();
   const [myBids, setMyBids] = useState([]);
+  
 
   useEffect(() => {
     axios
