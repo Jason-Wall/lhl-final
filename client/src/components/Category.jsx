@@ -46,7 +46,7 @@ function Category({ categories }) {
         {itemsInCategory.map((item) => {
           return (
             <Link to={`/items/${item.id}`} key={item.id}>
-              <Item photo={item.img_url} title={item.title}></Item>
+              <Item photo={item.img_url} title={item.title} ></Item>
             </Link>
           );
         })}

@@ -10,11 +10,11 @@ function Items(props) {
     let item = props.items.find((item) => item.id === image.item_id);
     let itemBid = props.items.find((item2) => item2.id === item.id);
     return (
-      <div className="itemContainer">
+      // <div className="itemsContainer">
         <Link to={"/items/" + image.item_id} key={image.item_id}>
           <Item photo={image.img_url} title={item.title} bid={itemBid}></Item>
         </Link>
-      </div>
+      // </div>
     );
   });
 

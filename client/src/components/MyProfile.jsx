@@ -17,7 +17,7 @@ const MyProfile = ({ users, items, bids, images }) => {
   }, [params]);
 
   return (
-    <div>
+    <body>
       <div className="profile">
         <div className="profile-photo">
           {" "}
@@ -36,7 +36,7 @@ const MyProfile = ({ users, items, bids, images }) => {
           <p>{thisUser && thisUser.bio}</p>
         </div>
       </div>
-      <div className="category-title">
+      <div className="items">
         {currentUser ? (
           <h1>
             Your Items For Sale
@@ -49,7 +49,8 @@ const MyProfile = ({ users, items, bids, images }) => {
           </h1>
         )}
       </div>
-      <div className="items-info">
+      {/* <div className="items-info"> */}
+      <div className="itemsContainer">
         {itemsForUser.map((item) => {
           let img = images.find((image) => image.item_id === item.id);
           return (
@@ -59,7 +60,7 @@ const MyProfile = ({ users, items, bids, images }) => {
           );
         })}
       </div>
-    </div>
+    </body>
   );
 };
 
