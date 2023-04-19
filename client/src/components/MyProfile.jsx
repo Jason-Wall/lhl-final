@@ -4,7 +4,7 @@ import Item from "./Item";
 import { loginContext } from "../providers/UserContext";
 import("./MyProfile.scss");
 
-const MyProfile = ({ users, items, bids, images }) => {
+const MyProfile = ({ users, items, images }) => {
   const params = useParams();
   const [thisUser, setThisUser] = useState({});
   const { currentUser } = useContext(loginContext);
@@ -52,10 +52,11 @@ const MyProfile = ({ users, items, bids, images }) => {
       {/* <div className="items-info"> */}
       <div className="itemsContainer">
         {itemsForUser.map((item) => {
+          let itemBid = items.find((item2) => item2.id === item.id);
           let img = images.find((image) => image.item_id === item.id);
           return (
             <Link to={`/items/${item.id}`} key={item.id}>
-              <Item photo={img.img_url} title={item.title}></Item>
+              <Item photo={img.img_url} title={item.title} bid={itemBid}></Item>
             </Link>
           );
         })}

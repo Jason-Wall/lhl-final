@@ -7,7 +7,7 @@ import Item from "./Item";
 
 import "./Category.scss";
 
-function Category({ categories }) {
+function Category({ categories, items }) {
   const params = useParams();
 
   const [itemsInCategory, setItemsInCategory] = useState([]);
@@ -44,9 +44,10 @@ function Category({ categories }) {
       </div>
       <div className="categoryItemsContainer">
         {itemsInCategory.map((item) => {
+          let itemBid = items.find((item2) => item2.id === item.id);
           return (
             <Link to={`/items/${item.id}`} key={item.id}>
-              <Item photo={item.img_url} title={item.title} ></Item>
+              <Item photo={item.img_url} title={item.title} bid={itemBid} ></Item>
             </Link>
           );
         })}
