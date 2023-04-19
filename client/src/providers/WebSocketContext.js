@@ -11,17 +11,23 @@ export default function WebSocketProvider(props) {
     const socket = io();
     setSocket(socket);
 
+    socket.on('bid', (data) => {
+      console.log('someone made a bid!', data);
+    });
+
     //Cleanup
     return () => {
-      socket.disconnect();
+      socket.close();
     };
 
   }, []);
 
   // FUNCTIONS
   const socketLogin = (currentUser) => {
+    console.log('inside socket Login');
     socket.emit('login', currentUser);
   };
+
 
   const socketInfo = { socketLogin };
   return (
