@@ -30,8 +30,9 @@ const getItemInfo = (id) => {
       `SELECT items.*, 
     bids.*
   FROM items
-  JOIN bids ON items.id = bids.item_id
-  WHERE items.id = ${id};`
+  JOIN bids ON items.id = bids.item_id 
+  WHERE items.id = ${id}
+  ORDER BY bids.bid_value DESC;`
     )
     .then((itemInfo) => {
       // I am making a second db query within our .then to obtain all the images for certain item
