@@ -1,3 +1,5 @@
+@import "sassPartial";
+
 .bids-image {
   width: 20vw;
   height: 40vh;
@@ -17,17 +19,9 @@
 }
 
 .my-bid-price {
-  opacity: 0.5;
-  position: absolute;
-  margin-left: 20px;
-  width: 10vw;
-  height: 5vh;
+  @include bid-price-on-hover()
+}
+
+.itemLink:hover .my-bid-price {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-Color: black;
-  color: white;
-  padding: 10px;
-  border-Radius: 5px;
-  transform: translate(0, -100%);
 }

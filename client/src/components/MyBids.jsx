@@ -30,7 +30,7 @@ const MyBids = (props) => {
     <div className="itemsContainer top-element">
       {myBids.map((bid) => {
         return (
-          <Link key={bid.id} to={`/items/${bid.item_id}`}>
+          <Link className="itemLink" key={bid.id} to={`/items/${bid.item_id}`}>
             <div
                 style={ {
                   backgroundImage: `url(${bid.img_url})`}}

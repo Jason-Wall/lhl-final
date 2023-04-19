@@ -27,14 +27,14 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-        :hover {
+        // :hover {
           // color:white;
-        }
-        .login{
-          :hover{
+        // }
+        // .login{
+          // :hover{
             // color: black;
-          }
-        }
+          // }
+        // }
     }
     .categories {
       display: flex;
@@ -48,11 +48,11 @@
         div {
          margin-right: 15px;
         }
-        .login {
-          input {
+        // .login {
+          // input {
             // color: black;
-          }
-        }
+          // }
+        // }
     }
     .search {
       // color: black;
@@ -88,6 +88,6 @@
 
 .dropdown:hover .dropdown-content {display: flex;}
 
-.login-input {
+// .login-input {
   // color: black;
-}
+// }
