@@ -26,7 +26,7 @@ const getAllItems = () => {
 // )
 
 // getItem - Get object of one Item
-const getItemInfo = (id) => {
+const getItemDetails = (id) => {
   return db
     .query(
       `SELECT items.*, 
@@ -91,14 +91,14 @@ const getItemsEndingSoon = () => {
     })
     .catch(function (xhr, status, error) {
       console.log("Error:4 " + error);
-      console.log(xhr)
-      console.log(status)
+      console.log(xhr);
+      console.log(status);
     });
 };
 
 module.exports = {
   getAllItems,
-  getItemInfo,
+  getItemDetails,
   createItem,
   getItemsEndingSoon
 };

@@ -18,10 +18,10 @@ erouter.get("/ending-soon", (req, res) => {
   });
 });
 
-// GET /items/:id   - Gets all info for one item
+// GET /items/:id   - Gets all details for one item (item, pics, bids)
 erouter.get("/:id", (req, res) => {
-  itemsdb.getItemInfo(req.params.id).then((itemInfo) => {
-    res.send(itemInfo);
+  itemsdb.getItemDetails(req.params.id).then((itemDetails) => {
+    res.send(itemDetails);
   });
 });
 
