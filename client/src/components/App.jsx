@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Import components:
@@ -12,8 +12,9 @@ import AllBids from './AllBids';
 import MyProfile from './MyProfile';
 
 // Import hooks and helpers:
+import { loginContext } from '../providers/UserContext';
 import useApplicationData from '../hooks/useApplicationData';
-import useWebSocket from '../hooks/useWebSocket';
+// import useWebSocket from '../hooks/useWebSocket';
 
 // Import styling:
 import './App.scss';
@@ -23,7 +24,6 @@ export default function App() {
   // State management and functions:
   const { state, setState, setStateRefresh } = useApplicationData();
   const [theme, setTheme] = useState(true);
-  const { numbers } = useWebSocket();
 
   return (
     <BrowserRouter>
@@ -78,11 +78,6 @@ export default function App() {
             <Route path='/items/:userId' element={<MyBids />}></Route>
             <Route path='/logout' element={<MyBids />}></Route>
           </Routes>
-          <ul>
-            {numbers.map((num) => (
-              <li>{num}</li>
-            ))}
-          </ul>
         </main>
       </div>
     </BrowserRouter>

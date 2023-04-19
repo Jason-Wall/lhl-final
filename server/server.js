@@ -56,12 +56,20 @@ app.use("/bids", bidRoutes);
 // server listener
 const numbers = [];
 io.on('connection', (socket) => {
-  console.log('someone connected');
-  const number = Math.random() * 10;
-  socket.user = number;
-  numbers.push(number);
-  socket.emit('NUMBERS', { number, numbers });
-  socket.broadcast.emit('NEW_NUMBERS', { number, numbers });
+  socket.currentUser = 0;
+
+  socket.on('login', () => {
+    console.log(`${socket.currentUser} has logged in.`);
+    socket.broadcast.emit('NEW_NUMBERS', { number, numbers });
+  });
+
+  // console.log('someone connected');
+  // const number = Math.random() * 10;
+  // socket.user = number;
+  // numbers.push(number);
+
+  // socket.emit('NUMBERS', { number, numbers });
+  // socket.broadcast.emit('NEW_NUMBERS', { number, numbers });
 
   socket.on('disconnect', () => {
     console.log(`${socket.user} has left the building`);

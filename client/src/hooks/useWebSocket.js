@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
 import { io } from 'socket.io-client';
 const socket = io();
 
-export default function useWebSocket() {
+export default function useWebSocket(currentUser) {
 
   // State management:
   const [numbers, setNumbers] = useState([]);
 
   useEffect(() => {
     socket.on('connect', () => {
-      console.log('Socket connected - Client Side');
+      console.log(currentUser);
     });
 
     socket.on('NUMBERS', (data) => {
