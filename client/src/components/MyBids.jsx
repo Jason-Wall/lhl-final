@@ -3,17 +3,16 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import './MyBids.scss'
 
-const bidToDollars = function (value) {
-  return (value / 100).toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
-};
-
 const MyBids = (props) => {
   const params = useParams();
   const [myBids, setMyBids] = useState([]);
   
+  const bidToDollars = function (value) {
+    return (value / 100).toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+  };
 
   useEffect(() => {
     axios
@@ -31,7 +30,7 @@ const MyBids = (props) => {
     <div className="itemsContainer top-element">
       {myBids.map((bid) => {
         return (
-          <Link key={bid.id} to={`/items/${bid.item_id}`}>
+          <Link className="itemLink" key={bid.id} to={`/items/${bid.item_id}`}>
             <div
                 style={ {
                   backgroundImage: `url(${bid.img_url})`}}

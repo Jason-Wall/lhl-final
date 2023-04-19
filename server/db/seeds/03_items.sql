@@ -4,8 +4,8 @@ VALUES
 (4, 1, 'Original Iphone 1', 'Brand new, still in box. Signed by Steve Jobs', 5, '2023-04-28 12:23:34.00'),
 (4, 1, 'Original Motorola Razor', 'Brand new, still in box.', 5, '2023-04-25 12:23:34.00'),
 (4, 1, 'Original Xbox', 'Brand new, still in box. Signed by Bill Gates', 5, '2023-05-22 12:23:34.00'),
-(4, 2, 'Original Gameboy', 'Brand new, still in box. Signed by Gunpei Yokoi', 5, '2023-04-22 08:23:34.00'),
-(4, 2, 'Super Mario Kart', 'Brand new, still in box. Compatible with the Super Nintendo', 5, '2023-05-01 11:23:34.00'),
+(4, 1, 'Original Gameboy', 'Brand new, still in box. Signed by Gunpei Yokoi', 5, '2023-04-22 08:23:34.00'),
+(4, 1, 'Super Mario Kart', 'Brand new, still in box. Compatible with the Super Nintendo', 5, '2023-05-01 11:23:34.00'),
 (1, 3, 'Scooter', 'Purchased then never used !!! Only 15 kms on it total!!! Factory upgrades as well including a matching and lockable rear top box and screen ! NO PDI FEE !! + $199 doc and taxes Engine Type: Single cylinder 4-stroke i-get Displacement: 155cc Bore and Stroke: 58 mm x 58.6 mm Cooling: Air Fuel System: Electronic injection Transmission: Automatic CVT Front Suspension: Telescopic hydraulic fork, 76 mm stroke Front Brakes: Single disk 240 mm Front Tire: Tubeless 90 / 80 - 16 in., 51J Rear Suspension: Single hydraulic shock absorber with 5-position preload adjustment, 74.5 mm stroke Rear Brakes: Tamburo 140 mm Rear Tire: Tubeless 100 / 80 - 14 in., 54J Seat Height: 31.1 in. (790 mm) Wheelbase: 52.7 in. (1,340 mm) Fuel Capacity: 1.58 gal. (6 L) Colors: Gray, Matte Red', 5, '2023-05-01 11:23:34.00'),
 (5, 3, 'Smart Car', '014 SMART FORTWO ELECTRIC DRIVE CABWITH ONLY 66500KM!!
 

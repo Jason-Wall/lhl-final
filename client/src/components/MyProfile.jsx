@@ -4,7 +4,7 @@ import Item from "./Item";
 import { loginContext } from "../providers/UserContext";
 import("./MyProfile.scss");
 
-const MyProfile = ({ users, items, bids, images }) => {
+const MyProfile = ({ users, items, images }) => {
   const params = useParams();
   const [thisUser, setThisUser] = useState({});
   const { currentUser } = useContext(loginContext);
@@ -17,7 +17,7 @@ const MyProfile = ({ users, items, bids, images }) => {
   }, [params]);
 
   return (
-    <div>
+    <body>
       <div className="profile">
         <div className="profile-photo">
           {" "}
@@ -36,7 +36,7 @@ const MyProfile = ({ users, items, bids, images }) => {
           <p>{thisUser && thisUser.bio}</p>
         </div>
       </div>
-      <div className="category-title">
+      <div className="items">
         {currentUser ? (
           <h1>
             Your Items For Sale
@@ -49,17 +49,19 @@ const MyProfile = ({ users, items, bids, images }) => {
           </h1>
         )}
       </div>
-      <div className="items-info">
+      {/* <div className="items-info"> */}
+      <div className="itemsContainer">
         {itemsForUser.map((item) => {
+          let itemBid = items.find((item2) => item2.id === item.id);
           let img = images.find((image) => image.item_id === item.id);
           return (
-            <Link to={`/items/${item.id}`} key={item.id}>
-              <Item photo={img.img_url} title={item.title}></Item>
+            <Link className="itemLink" to={`/items/${item.id}`} key={item.id}>
+              <Item photo={img.img_url} title={item.title} bid={itemBid}></Item>
             </Link>
           );
         })}
       </div>
-    </div>
+    </body>
   );
 };
 

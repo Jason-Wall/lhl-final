@@ -16,7 +16,7 @@ const getBids = () => {
 
 const getBidsForUser = (userId) => {
   return db
-    .query(`SELECT bids.*, item_images.img_url FROM bids JOIN item_images ON bids.item_id = item_images.item_id WHERE bids.user_id = ${userId}
+    .query(`SELECT DISTINCT ON (bids.item_id) bids.*, item_images.img_url FROM bids JOIN item_images ON bids.item_id = item_images.item_id WHERE bids.user_id = ${userId}
   AND bids.id NOT IN (SELECT MIN(id) FROM bids GROUP BY item_id)`)
     .then(bids => {
       console.log("%%%", bids.rows);

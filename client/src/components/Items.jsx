@@ -10,11 +10,11 @@ function Items(props) {
     let item = props.items.find((item) => item.id === image.item_id);
     let itemBid = props.items.find((item2) => item2.id === item.id);
     return (
-      <div className="itemContainer">
-        <Link to={"/items/" + image.item_id} key={image.item_id}>
+      // <div className="itemsContainer">
+        <Link className="itemLink" to={"/items/" + image.item_id} key={image.item_id}>
           <Item photo={image.img_url} title={item.title} bid={itemBid}></Item>
         </Link>
-      </div>
+      // </div>
     );
   });
 
@@ -45,7 +45,7 @@ function Items(props) {
           console.log(itemBid)
           return (
             <div className="itemContainer">
-              <Link to={`/items/${item.id}`} key={item.id}>
+              <Link class='itemLink' to={`/items/${item.id}`} key={item.id}>
                 {/* rather than linking to an item or creating a new component, we render an image directly here with a special class to style the photos smaller */}
                 {/* <img
                   className="featuredImage"

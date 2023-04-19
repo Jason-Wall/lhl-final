@@ -1,5 +1,6 @@
 // To use these variables, paste @import "sassPartial"; at the top of your scss file
 
+//top margin to drop content below navbar
 $margin-top: 130px;
 
 // colors
@@ -53,6 +54,22 @@ $scheme-nav-dark: $darkest, $lightest;
   height: 10vh;
   object-fit: cover;
   border-radius: 4px;
+}
+
+@mixin bid-price-on-hover(){
+  opacity: 0.8;
+  position: absolute;
+  margin-left: 20px;
+  width: 8vw;
+  height: 5vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-Color: black;
+  color: white;
+  padding: 10px;
+  border-Radius: 5px;
+  transform: translate(-10%, -100%);
 }
 
 .light {

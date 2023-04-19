@@ -54,7 +54,7 @@ export default function App() {
             ></Route>
             <Route
               path='/categories/:categoryId'
-              element={<Category categories={state.categories} images={state.images} />}
+              element={<Category categories={state.categories} images={state.images} items={state.items}/>}
             ></Route>
             <Route path='/bids' element={<AllBids />}></Route>
             <Route path='/bids/:userId' element={<MyBids />}></Route>
@@ -64,7 +64,6 @@ export default function App() {
                 <MyProfile
                   users={state.users}
                   items={state.items}
-                  bids={state.bids}
                   images={state.images}
                 />
               }
