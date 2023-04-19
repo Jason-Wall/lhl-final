@@ -3,14 +3,12 @@ import Search from './Search';
 import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { loginContext } from '../providers/UserContext';
-import { webSocketContext } from '../providers/WebSocketContext';
 
 function Nav(props) {
   let categories = props.categories;
 
   const [userId, setUserId] = useState(null);
   const { currentUser, login, logout } = useContext(loginContext);
-  const { socketLogin } = useContext(webSocketContext);
 
   const handleChange = (event) => {
     setUserId(event.target.value);
@@ -19,7 +17,6 @@ function Nav(props) {
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       login(userId);
-      socketLogin(userId);
     }
   };
 
