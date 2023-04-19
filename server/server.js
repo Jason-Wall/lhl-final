@@ -1,17 +1,16 @@
+// Imports
 const express = require("express");
-
-// Morgan documents network traffic to console.
-const morgan = require("morgan");
+const http = require('http');
+const websocket = require('./websocket');
+const morgan = require("morgan"); // Morgan documents network traffic to console.
 const cors = require("cors");
 
-const app = express();
+// Create app, websocket and db instances
 const port = 8001; // Define our base URL as http:\\localhost:8001
-
-// Use db instance
+const app = express();
+const server = http.createServer(app);
+websocket(server);
 const db = require("./db/db");
-
-// Route actions
-const items = require("./routes/items");
 
 // Middleware
 // Morgan documents network traffic to console.
@@ -25,6 +24,8 @@ app.use(cors());
 // loads static if applicable. Currently routed to build
 app.use(express.static("../client/build"));
 
+
+//EXPRESS
 // Separated Routes for each Resource
 const itemRoutes = require("./routes/items");
 const userRoutes = require("./routes/users");
@@ -33,9 +34,7 @@ const categoryRoutes = require("./routes/categories");
 const conditionRoutes = require("./routes/conditions");
 const bidRoutes = require("./routes/bids");
 
-//Endpoints - Currently lives inside of server - As we scale up we need to move
-// into routes folder for each (user, items, category, etc.)
-
+//Endpoints:
 app.use("/items", itemRoutes);
 // app.use("/items/:id", itemRoutes);
 app.use("/users", userRoutes);
@@ -44,6 +43,8 @@ app.use("/categories", categoryRoutes);
 app.use("/conditions", conditionRoutes);
 app.use("/bids", bidRoutes);
 
-app.listen(port, () => {
+
+// PORT LISTEN
+server.listen(port, () => {
   console.log(`app is listening on ${port}`);
 });

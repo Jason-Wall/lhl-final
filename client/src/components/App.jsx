@@ -1,43 +1,37 @@
-import { React, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useEffect, useState, useContext } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Import components:
-import Items from "./Items";
-import Nav from "./Nav";
-import ItemDetail from "./ItemDetail";
-import ItemEdit from "./ItemEdit";
-import Category from "./Category";
-import MyBids from "./MyBids";
-import AllBids from "./AllBids";
-import MyProfile from "./MyProfile";
+import Items from './Items';
+import Nav from './Nav';
+import ItemDetail from './ItemDetail';
+import ItemEdit from './ItemEdit';
+import Category from './Category';
+import MyBids from './MyBids';
+import AllBids from './AllBids';
+import MyProfile from './MyProfile';
 
 // Import hooks and helpers:
-import useApplicationData from "../hooks/useApplicationData";
+import useApplicationData from '../hooks/useApplicationData';
 
 // Import styling:
-import "./App.scss";
+import './App.scss';
 
 // MAIN FUNCTION
 export default function App() {
   // State management and functions:
   const { state, setState, setStateRefresh } = useApplicationData();
-
   const [theme, setTheme] = useState(true);
 
   return (
     <BrowserRouter>
       {/* create a button that sets this theme set theme  = !theme*/}
-      <div className={`${theme ? "light" : "dark"}`}>
-        <Nav
-          items={state.items}
-          categories={state.categories}
-          theme={theme}
-          setTheme={setTheme}
-        />
-        <main className="main">
+      <div className={`${theme ? 'light' : 'dark'}`}>
+        <Nav items={state.items} categories={state.categories} theme={theme} setTheme={setTheme} />
+        <main className='main'>
           <Routes>
             <Route
-              path="/"
+              path='/'
               element={
                 <Items
                   images={state.images}
@@ -46,19 +40,9 @@ export default function App() {
                 />
               }
             ></Route>
-            <Route path="items/:itemId" element={<ItemDetail />}></Route>
+            <Route path='items/:itemId' element={<ItemDetail onSubmit={setStateRefresh} />}></Route>
             <Route
-              path="/"
-              element={
-                <Items
-                  images={state.images}
-                  endingSoon={state.itemsEndingSoon}
-                />
-              }
-            ></Route>
-            <Route path="items/:itemId" element={<ItemDetail onSubmit={setStateRefresh}/>}></Route>
-            <Route
-              path="items/new"
+              path='items/new'
               element={
                 <ItemEdit
                   item={false}
@@ -69,14 +53,13 @@ export default function App() {
               }
             ></Route>
             <Route
-              path="/categories/:categoryId"
-              element={
-                <Category categories={state.categories} images={state.images} />
-              }
+              path='/categories/:categoryId'
+              element={<Category categories={state.categories} images={state.images} />}
             ></Route>
-            <Route path="/bids" element={<AllBids />}></Route>
+            <Route path='/bids' element={<AllBids />}></Route>
+            <Route path='/bids/:userId' element={<MyBids />}></Route>
             <Route
-              path="/profile/:userId"
+              path='/profile/:userId'
               element={
                 <MyProfile
                   users={state.users}
@@ -86,8 +69,7 @@ export default function App() {
                 />
               }
             ></Route>
-            <Route path="/bids/:userId" element={<MyBids />}></Route>
-            <Route path="/logout" element={<MyBids />}></Route>
+            <Route path='/logout' element={<MyBids />}></Route>
           </Routes>
         </main>
       </div>
