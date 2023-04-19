@@ -1,22 +1,16 @@
+// Imports
 const express = require("express");
 const http = require('http');
-const socketio = require('socket.io');
-
-const port = 8001; // Define our base URL as http:\\localhost:8001
-
+const websocket = require('./websocket');
 const morgan = require("morgan"); // Morgan documents network traffic to console.
 const cors = require("cors");
 
+// Create app, websocket and db instances
+const port = 8001; // Define our base URL as http:\\localhost:8001
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
-
-
-// Use db instance
+websocket(server);
 const db = require("./db/db");
-
-// Route actions
-const items = require("./routes/items");
 
 // Middleware
 // Morgan documents network traffic to console.
@@ -48,33 +42,6 @@ app.use("/images", imageRoutes);
 app.use("/categories", categoryRoutes);
 app.use("/conditions", conditionRoutes);
 app.use("/bids", bidRoutes);
-
-
-
-
-// SOCKET
-// server listener
-const numbers = [];
-io.on('connection', (socket) => {
-  socket.currentUser = 0;
-
-  socket.on('login', () => {
-    console.log(`${socket.currentUser} has logged in.`);
-    socket.broadcast.emit('NEW_NUMBERS', { number, numbers });
-  });
-
-  // console.log('someone connected');
-  // const number = Math.random() * 10;
-  // socket.user = number;
-  // numbers.push(number);
-
-  // socket.emit('NUMBERS', { number, numbers });
-  // socket.broadcast.emit('NEW_NUMBERS', { number, numbers });
-
-  socket.on('disconnect', () => {
-    console.log(`${socket.user} has left the building`);
-  });
-});
 
 
 // PORT LISTEN
