@@ -1,7 +1,7 @@
 // Imports
 const express = require("express");
 const http = require('http');
-const websocket = require('./websocket');
+const { startWebSocket } = require('./websocket');
 const morgan = require("morgan"); // Morgan documents network traffic to console.
 const cors = require("cors");
 
@@ -9,7 +9,7 @@ const cors = require("cors");
 const port = 8001; // Define our base URL as http:\\localhost:8001
 const app = express();
 const server = http.createServer(app);
-websocket(server);
+startWebSocket(server);
 const db = require("./db/db");
 
 // Middleware

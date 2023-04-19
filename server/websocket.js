@@ -1,13 +1,18 @@
 const socketio = require('socket.io');
+let ioInstance = null;
 
-module.exports = function (server) {
+const socketBidNotify = (bid) => {
+  ioInstance.emit('bid', bid);
+};
+
+function startWebSocket(server) {
   const io = socketio(server);
-
+  ioInstance = io;
   // SOCKET
 
   // Where should I create the rooms?
 
-  // SERVER LISTENER
+  // SOCKET LISTENER
   io.on('connection', (socket) => {
     console.log('A new socket has been created.');
     socket.currentUser = 0;
@@ -23,7 +28,23 @@ module.exports = function (server) {
       // Broadcast to room bidInfo.itemId  {User id/name, item id/name, bid price}
     });
 
-    // socket.broadcast.emit('login', { number, numbers });
+    socket.on('disconnect', () => {
+      console.log(`${socket.userId} has left the building`);
+    });
+  });
+
+  return { socketBidNotify };
+};
+
+module.exports = { startWebSocket, socketBidNotify };
+
+
+
+
+
+
+
+// socket.broadcast.emit('login', { number, numbers });
     // console.log('someone connected');
     // const number = Math.random() * 10;
     // socket.user = number;
@@ -31,9 +52,3 @@ module.exports = function (server) {
 
     // socket.emit('NUMBERS', { number, numbers });
     // socket.broadcast.emit('NEW_NUMBERS', { number, numbers });
-
-    socket.on('disconnect', () => {
-      console.log(`${socket.userId} has left the building`);
-    });
-  });
-};
