@@ -1,18 +1,19 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./ItemDetail.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ThumbNail from "./ThumbNail";
 import Carousel from "./Carousel";
+import CreateBid from "./CreateBid";
+import Counter from "./general/Counter";
 
-function ItemDetail() {
+function ItemDetail(props) {
   // Get the itemId from the URL parameters
   const params = useParams();
   const [itemObj, setItemObj] = useState({});
-  const [countdown, setCountdown] = useState(null);
-  // const [countdownInterval, setCountdownInterval] = useState(null);
-  const interval = useRef();
-  //useRef creates a singular reference point in memory so that on subsequent rerenders it wont rerun, it will just point to the reference it made before
+  //create state for the activeImage of the carousel
+  const [activeImage, setActiveImage] = useState("");
+
   useEffect(() => {
     axios
       //fetch item data from the server
@@ -21,45 +22,12 @@ function ItemDetail() {
         console.log("res.data[0]", res.data[0]);
         // Set the item object state with the response data
         setItemObj(res.data[0]);
-
-        // Set a countdown timer to display how much time is left until the bidding closes
-        const countdownDate = new Date(res.data[0].end_date);
-        if (!interval.current) {
-          interval.current = setInterval(() => {
-            const now = new Date();
-            const timeDifference = countdownDate.getTime() - now.getTime();
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor(
-              (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-            );
-            const minutes = Math.floor(
-              (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
-            );
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-            // If the countdown is complete, clear the interval and display a message
-            if (timeDifference < 0) {
-              clearInterval(interval.current);
-              setCountdown("Bids are closed!");
-            } else {
-              // Check if any value is NaN before displaying countdown
-              const countdownValues = [days, hours, minutes, seconds];
-              const countdownString = countdownValues.some(isNaN)
-                ? null
-                : `Only ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds left!`;
-              setCountdown(countdownString);
-            }
-          }, 1000);
-        }
       })
       .catch((error) => {
         console.log(error.response.status);
         console.log(error.response.headers);
         console.log(error.response.data);
       });
-    // Clear the countdown interval on unmount to prevent memory leaks
-    return () => {
-      clearInterval(interval.current);
-    };
   }, [params]);
 
   // Helper function to convert bid value to a dollar amount
@@ -76,9 +44,12 @@ function ItemDetail() {
       return;
     }
     return itemObj.img_url.map((image) => {
-      console.log("ITEMOBJ", image);
       return (
-        <ThumbNail photo={image.img_url} title={itemObj.title}></ThumbNail>
+        <ThumbNail
+          photo={image.img_url}
+          title={itemObj.title}
+          setActiveImage={setActiveImage}
+        ></ThumbNail>
       );
     });
   };
@@ -95,12 +66,8 @@ function ItemDetail() {
               <Carousel
                 images={itemObj.img_url}
                 title={itemObj.title}
+                active={activeImage}
               ></Carousel>
-              // <img
-              //   className="image"
-              //   src={itemObj.img_url[0].img_url}
-              //   alt={itemObj.title}
-              // />
             )}
           </div>
           <div className="info">
@@ -112,7 +79,9 @@ function ItemDetail() {
             <span>
               <span>Current Bid: {bidToDollars(itemObj.bid_value)}</span>
               <br />
-              <span className="countdown-timer">{countdown}</span>
+              {/*It is necessary to only render this once `itemObj.end_date` exists, otherwise the setInterval won't start properly
+               */}
+              {itemObj.end_date && <Counter end_date={itemObj.end_date} />}
             </span>
             <span>
               <button>BID NOW!</button>
@@ -121,6 +90,7 @@ function ItemDetail() {
           </div>
         </div>
       )}
+      <CreateBid item={itemObj} onSubmit={props.onSubmit} />
     </>
   );
 }

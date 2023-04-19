@@ -2,18 +2,19 @@ import React from "react";
 import Item from "./Item";
 
 function Carousel(props) {
-  console.log("carouselprops", props.images);
   return (
     <div id="carouselExample" class="carousel slide">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <Item photo={props.images[0].img_url} title={props.title}></Item>
-          {/* <img src="..." class="d-block w-100" alt={props.title} /> */}
+          <Item
+            // if there is an active image use that, otherwise use the first image
+            photo={props.active ? props.active : props.images[0].img_url}
+            title={props.title}
+          ></Item>
         </div>
-        {props.images.slice(1).map((image) => {
+        {props.images.map((image) => {
           return (
             <div class="carousel-item">
-              {/* <img src="..." class="d-block w-100" alt="..." /> */}
               <Item photo={image.img_url} title={props.title}></Item>
             </div>
           );

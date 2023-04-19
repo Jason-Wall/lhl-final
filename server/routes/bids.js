@@ -16,5 +16,10 @@ erouter.get("/:userId", (req, res) => {
   });
 });
 
-
+erouter.post("/new", (req, res) => {
+  console.log(req.body)
+  bidsdb.createBid(req.body)
+  .then()
+  res.send()
+})
 module.exports = erouter;
