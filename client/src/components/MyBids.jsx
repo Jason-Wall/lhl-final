@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import './MyBids.scss'
 
 const MyBids = (props) => {
   const params = useParams();
@@ -20,16 +21,16 @@ const MyBids = (props) => {
   }, [params]);
 
   return (
-    <div className="itemsContainer">
+    <div className="itemsContainer top-element">
       {myBids.map((bid) => {
         return (
           <Link key={bid.id} to={`/items/${bid.item_id}`}>
-            <img
-              className="image"
-              src={bid.img_url}
-              alt={"bid.title we need to add this"}
-            />
-            <h1>{bid.bid_value}</h1>
+            <div
+                style={ {
+                  backgroundImage: `url(${bid.img_url})`}}
+              className="bids-image"
+            ></div>
+            <div class='bid-price' >{bid.bid_value}</div>
           </Link>
         );
       })}

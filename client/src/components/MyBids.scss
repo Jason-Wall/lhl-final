@@ -1,0 +1,33 @@
+.bids-image {
+  width: 20vw;
+  height: 40vh;
+  background-Repeat: no-repeat;
+  background-Position: center;
+  background-Size: cover;
+  position: relative;
+    // :hover {
+    //   width: 21vw;
+    //   height: 42vh;
+    //   opacity: 0.9;
+    //   zoom: 5%;
+    //     .bid-price {
+    //       opacity: 1;
+    //     }
+    // }
+}
+
+.bid-price {
+  opacity: 0.5;
+  position: absolute;
+  margin-left: 20px;
+  width: 10vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-Color: black;
+  color: white;
+  padding: 10px;
+  border-Radius: 5px;
+  transform: translate(0, -100%);
+}
