@@ -23,16 +23,15 @@
 }
 
 .items-info {
-  margin-top: 90px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-left: 4em;
-  margin-right: 4em;
-}
-
-.items {
-  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
   margin-left: 2em;
   margin-right: 2em;
+}
+
+.category-title {
+  display: flex;
+  margin-left: 2em;
+  margin-top: 80px;
 }

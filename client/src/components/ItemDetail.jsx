@@ -6,11 +6,13 @@ import ThumbNail from "./ThumbNail";
 import Carousel from "./Carousel";
 import CreateBid from "./CreateBid";
 import Counter from "./general/Counter";
+import { loginContext } from '../providers/UserContext';
 
 function ItemDetail(props) {
   // Get the itemId from the URL parameters
   const params = useParams();
   const [itemObj, setItemObj] = useState({});
+  const { currentUser, login, logout } = useContext(loginContext);
   //create state for the activeImage of the carousel
   const [activeImage, setActiveImage] = useState("");
 
@@ -76,7 +78,9 @@ function ItemDetail(props) {
           </div>
           <div>{thumbNails(itemObj)}</div>
           <div>
-            <span>
+          <span>{Number(itemObj.user_id) === Number(currentUser) ? "👑 You are the highest bidder" : ""}</span>
+          <br />
+            <span>              
               <span>Current Bid: {bidToDollars(itemObj.bid_value)}</span>
               <br />
               {/*It is necessary to only render this once `itemObj.end_date` exists, otherwise the setInterval won't start properly
@@ -84,7 +88,7 @@ function ItemDetail(props) {
               {itemObj.end_date && <Counter end_date={itemObj.end_date} />}
             </span>
             <span>
-              <button>BID NOW!</button>
+              {/* <button>BID NOW!</button> */}
               <span>Condition: {itemObj.condition}</span>
             </span>
           </div>

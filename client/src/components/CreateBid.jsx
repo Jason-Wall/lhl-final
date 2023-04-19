@@ -18,7 +18,7 @@ const CreateBid = ({item, onSubmit}) => {
 
   useEffect(() => {
     setUserId(currentUser)
-    setItemId(item.id)
+    setItemId(item.item_id)
   }, [item, currentUser])
   
 
@@ -67,7 +67,7 @@ const CreateBid = ({item, onSubmit}) => {
                   // value={minBid}
                   placeholder='Bid Amount'
                   onChange={(event) => {
-                    setBidValue(event.target.value);
+                    setBidValue(event.target.value * 100);
                   }}
                 />
                 </div>

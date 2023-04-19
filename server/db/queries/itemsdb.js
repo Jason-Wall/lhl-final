@@ -3,7 +3,9 @@ const db = require("../db");
 // getItems - Get object of all Items
 const getAllItems = () => {
   return db
-    .query(`SELECT * FROM items;`)
+    // .query(`SELECT * FROM items;`)
+    // .query(`SELECT items.*, bids.bid_value FROM items JOIN bids on items.id = bids.item_id ORDER BY bids.bid_value DESC;`)
+    .query(`SELECT items.*, MAX(bids.bid_value) AS highest_bid FROM items JOIN bids ON items.id = bids.item_id GROUP BY items.id;`)
     .then((items) => {
       return items.rows;
     })
@@ -30,8 +32,9 @@ const getItemInfo = (id) => {
       `SELECT items.*, 
     bids.*
   FROM items
-  JOIN bids ON items.id = bids.item_id
-  WHERE items.id = ${id};`
+  JOIN bids ON items.id = bids.item_id 
+  WHERE items.id = ${id}
+  ORDER BY bids.bid_value DESC;`
     )
     .then((itemInfo) => {
       // I am making a second db query within our .then to obtain all the images for certain item
