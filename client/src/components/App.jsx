@@ -13,44 +13,17 @@ import MyProfile from './MyProfile';
 
 // Import hooks and helpers:
 import useApplicationData from '../hooks/useApplicationData';
+import useWebSocket from '../hooks/useWebSocket';
 
 // Import styling:
 import './App.scss';
-
-// Establish client socket
-import { io } from 'socket.io-client';
-const socket = io();
 
 // MAIN FUNCTION
 export default function App() {
   // State management and functions:
   const { state, setState, setStateRefresh } = useApplicationData();
   const [theme, setTheme] = useState(true);
-
-  // Socket Hook
-  const [numbers, setNumbers] = useState([]);
-
-  useEffect(() => {
-    socket.on('connect', () => {
-      console.log('Socket connected - Client Side');
-    });
-
-    socket.on('NUMBERS', (data) => {
-      console.log('Socket Package', data);
-      setNumbers(data.numbers);
-    });
-
-    socket.on('NEW_NUMBERS', (data) => {
-      console.log('New Numbers Socket Package', data);
-      setNumbers(data.numbers);
-    });
-
-    return () => {
-      socket.off('connect');
-      socket.on('NUMBERS');
-      socket.on('NEW_NUMBERS');
-    };
-  }, []);
+  const { numbers } = useWebSocket();
 
   return (
     <BrowserRouter>
