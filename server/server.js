@@ -40,9 +40,7 @@ const categoryRoutes = require("./routes/categories");
 const conditionRoutes = require("./routes/conditions");
 const bidRoutes = require("./routes/bids");
 
-//Endpoints - Currently lives inside of server - As we scale up we need to move
-// into routes folder for each (user, items, category, etc.)
-
+//Endpoints:
 app.use("/items", itemRoutes);
 // app.use("/items/:id", itemRoutes);
 app.use("/users", userRoutes);
@@ -56,8 +54,18 @@ app.use("/bids", bidRoutes);
 
 // SOCKET
 // server listener
-io.on('connection', () => {
+const numbers = [];
+io.on('connection', (socket) => {
   console.log('someone connected');
+  const number = Math.random() * 10;
+  socket.user = number;
+  numbers.push(number);
+  socket.emit('NUMBERS', { number, numbers });
+  socket.broadcast.emit('NEW_NUMBERS', { number, numbers });
+
+  socket.on('disconnect', () => {
+    console.log(`${socket.user} has left the building`);
+  });
 });
 
 

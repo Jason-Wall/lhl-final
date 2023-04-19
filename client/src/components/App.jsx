@@ -1,52 +1,76 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Import components:
-import Items from "./Items";
-import Nav from "./Nav";
-import ItemDetail from "./ItemDetail";
-import ItemEdit from "./ItemEdit";
-import Category from "./Category";
-import MyBids from "./MyBids";
-import AllBids from "./AllBids";
-import MyProfile from "./MyProfile";
+import Items from './Items';
+import Nav from './Nav';
+import ItemDetail from './ItemDetail';
+import ItemEdit from './ItemEdit';
+import Category from './Category';
+import MyBids from './MyBids';
+import AllBids from './AllBids';
+import MyProfile from './MyProfile';
 
 // Import hooks and helpers:
-import useApplicationData from "../hooks/useApplicationData";
+import useApplicationData from '../hooks/useApplicationData';
 
 // Import styling:
-import "./App.scss";
+import './App.scss';
+
+// Establish client socket
+import { io } from 'socket.io-client';
+const socket = io();
 
 // MAIN FUNCTION
 export default function App() {
   // State management and functions:
   const { state, setState, setStateRefresh } = useApplicationData();
 
+  // Socket Hook
+  const [numbers, setNumbers] = useState([]);
+
+  useEffect(() => {
+    socket.on('connect', () => {
+      console.log('Socket connected - Client Side');
+    });
+
+    socket.on('NUMBERS', (data) => {
+      console.log('Socket Package', data);
+      setNumbers(data.numbers);
+    });
+
+    socket.on('NEW_NUMBERS', (data) => {
+      console.log('New Numbers Socket Package', data);
+      setNumbers(data.numbers);
+    });
+
+    return () => {
+      socket.off('connect');
+      socket.on('NUMBERS');
+      socket.on('NEW_NUMBERS');
+    };
+  }, []);
+
   return (
     <BrowserRouter>
       <Nav items={state.items} categories={state.categories} />
-      <main className="main">
+
+      <main className='main'>
         <Routes>
           <Route
-            path="/"
+            path='/'
             element={
-              <Items
-                images={state.images}
-                endingSoon={state.itemsEndingSoon}
-                items={state.items}
-              />
+              <Items images={state.images} endingSoon={state.itemsEndingSoon} items={state.items} />
             }
           ></Route>
-          <Route path="items/:itemId" element={<ItemDetail />}></Route>
+          <Route path='items/:itemId' element={<ItemDetail />}></Route>
           <Route
-            path="/"
-            element={
-              <Items images={state.images} endingSoon={state.itemsEndingSoon} />
-            }
+            path='/'
+            element={<Items images={state.images} endingSoon={state.itemsEndingSoon} />}
           ></Route>
-          <Route path="items/:itemId" element={<ItemDetail />}></Route>
+          <Route path='items/:itemId' element={<ItemDetail />}></Route>
           <Route
-            path="items/new"
+            path='items/new'
             element={
               <ItemEdit
                 item={false}
@@ -57,14 +81,12 @@ export default function App() {
             }
           ></Route>
           <Route
-            path="/categories/:categoryId"
-            element={
-              <Category categories={state.categories} images={state.images} />
-            }
+            path='/categories/:categoryId'
+            element={<Category categories={state.categories} images={state.images} />}
           ></Route>
-          <Route path="/bids" element={<AllBids />}></Route>
+          <Route path='/bids' element={<AllBids />}></Route>
           <Route
-            path="/profile/:userId"
+            path='/profile/:userId'
             element={
               <MyProfile
                 users={state.users}
@@ -74,9 +96,14 @@ export default function App() {
               />
             }
           ></Route>
-          <Route path="/items/:userId" element={<MyBids />}></Route>
-          <Route path="/logout" element={<MyBids />}></Route>
+          <Route path='/items/:userId' element={<MyBids />}></Route>
+          <Route path='/logout' element={<MyBids />}></Route>
         </Routes>
+        <ul>
+          {numbers.map((num) => (
+            <li>{num}</li>
+          ))}
+        </ul>
       </main>
     </BrowserRouter>
   );
