@@ -10,12 +10,14 @@ import Category from './Category';
 import MyBids from './MyBids';
 import AllBids from './AllBids';
 import MyProfile from './MyProfile';
+import BidToast from './general/BidToast';
 
 // Import hooks and helpers:
 import useApplicationData from '../hooks/useApplicationData';
 
 // Import styling:
 import './App.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 // MAIN FUNCTION
 export default function App() {
@@ -71,6 +73,7 @@ export default function App() {
             ></Route>
             <Route path='/logout' element={<MyBids />}></Route>
           </Routes>
+          <BidToast />
         </main>
       </div>
     </BrowserRouter>

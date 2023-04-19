@@ -96,7 +96,25 @@ const getItemsEndingSoon = () => {
     });
 };
 
+// getItem - Returns a single item with username 
+const getItem = (id) => {
+  return db
+    .query(`SELECT items.* 
+    FROM items 
+    WHERE items.id = ${id};`)
+    .then((item) => {
+      return item.rows;
+    })
+    .catch(function (xhr, status, error) {
+      console.log("Error:4 " + error);
+      console.log(xhr);
+      console.log(status);
+    });
+};
+
+
 module.exports = {
+  getItem,
   getAllItems,
   getItemDetails,
   createItem,
