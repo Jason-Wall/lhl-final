@@ -4,16 +4,28 @@ import { io } from 'socket.io-client';
 export const webSocketContext = createContext();
 
 export default function WebSocketProvider(props) {
-  const socket = io();
-  console.log('socket', socket);
+  // MANAGE STATE
+  const [socket, setSocket] = useState(null);
 
+  useEffect(() => {
+    const socket = io();
+    setSocket(socket);
+
+    //Cleanup
+    return () => {
+      socket.close();
+    };
+
+  }, []);
+
+  // FUNCTIONS
   const socketLogin = (currentUser) => {
-    console.log('in Socket Login - WebSocketContext');
+    console.log('inside socket Login');
     socket.emit('login', currentUser);
   };
 
-  const socketInfo = { socketLogin };
 
+  const socketInfo = { socketLogin };
   return (
     <webSocketContext.Provider value={socketInfo}>
       {props.children}

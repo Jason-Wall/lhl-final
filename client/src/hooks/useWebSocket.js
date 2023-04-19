@@ -1,3 +1,7 @@
+// DEPRICATED - USE CONTEXT INSTEAD
+
+
+
 import { useState, useEffect } from "react";
 import { io } from 'socket.io-client';
 const socket = io();
@@ -8,7 +12,7 @@ export default function useWebSocket(currentUser) {
   const [numbers, setNumbers] = useState([]);
 
   useEffect(() => {
-    socket.on('connect', () => {
+    socket.on('login', () => {
       console.log(currentUser);
     });
 

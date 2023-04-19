@@ -12,9 +12,7 @@ import AllBids from './AllBids';
 import MyProfile from './MyProfile';
 
 // Import hooks and helpers:
-import { loginContext } from '../providers/UserContext';
 import useApplicationData from '../hooks/useApplicationData';
-// import useWebSocket from '../hooks/useWebSocket';
 
 // Import styling:
 import './App.scss';
@@ -59,6 +57,7 @@ export default function App() {
               element={<Category categories={state.categories} images={state.images} />}
             ></Route>
             <Route path='/bids' element={<AllBids />}></Route>
+            <Route path='/bids/:userId' element={<MyBids />}></Route>
             <Route
               path='/profile/:userId'
               element={
@@ -70,7 +69,6 @@ export default function App() {
                 />
               }
             ></Route>
-            <Route path='/bids/:userId' element={<MyBids />}></Route>
             <Route path='/logout' element={<MyBids />}></Route>
           </Routes>
         </main>
