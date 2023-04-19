@@ -17,7 +17,7 @@ const MyProfile = ({ users, items, bids, images }) => {
   }, [params]);
 
   return (
-    <body>
+    <div>
       <div className="profile">
         <div className="profile-photo">
           {" "}
@@ -36,7 +36,7 @@ const MyProfile = ({ users, items, bids, images }) => {
           <p>{thisUser && thisUser.bio}</p>
         </div>
       </div>
-      <div className="items">
+      <div className="category-title">
         {currentUser ? (
           <h1>
             Your Items For Sale
@@ -59,7 +59,7 @@ const MyProfile = ({ users, items, bids, images }) => {
           );
         })}
       </div>
-    </body>
+    </div>
   );
 };
 
