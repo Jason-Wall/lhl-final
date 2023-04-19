@@ -61,13 +61,8 @@ function Nav(props) {
                   </Link>
                 </div>
               </div>
-<<<<<<< HEAD
               <div className='btn mb1 bg-black'>
-                <Link to={`bids/${4}`}>My Bids</Link>
-=======
-              <div className="btn mb1 bg-black">
                 <Link to={`bids/${currentUser}`}>My Bids</Link>
->>>>>>> main
               </div>
             </>
           ) : (

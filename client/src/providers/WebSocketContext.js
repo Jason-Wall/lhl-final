@@ -5,8 +5,10 @@ export const webSocketContext = createContext();
 
 export default function WebSocketProvider(props) {
   const socket = io();
+  console.log('socket', socket);
 
   const socketLogin = (currentUser) => {
+    console.log('in Socket Login - WebSocketContext');
     socket.emit('login', currentUser);
   };
 
